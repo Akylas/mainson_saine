@@ -118,12 +118,12 @@ function CAppWindow<T extends BaseClass<BaseWindow>>(baseClass: T) {
                 if (_args.modal === true) {
                 } else {
                     if (__APPLE__) {
-                        var button = (this.tiProxy.leftNavButton = new Button({
+                        var button = (this.getTiProxy().leftNavButton = new Button({
                             rid: _args.leftMenuButtonRid || 'menuBtn',
                             callbackId: 'menuBtn'
                         }));
                     } else {
-                        this.tiProxy.applyProperties({
+                        this.getTiProxy().applyProperties({
                             homeAsUpIndicator: 'images/menu.png',
                             displayHomeAsUp: true,
                             onHomeIconItemSelected: function() {
@@ -154,7 +154,7 @@ function CAppWindow<T extends BaseClass<BaseWindow>>(baseClass: T) {
             const customNavBar = hasCustomNavBar(this);
             if (this.titleView) {
                 this.currentSubtitle = subtitle || this.currentSubtitle;
-                (customNavBar ? this.container : this.tiProxy).applyProperties({
+                (customNavBar ? this.container : this.getTiProxy()).applyProperties({
                     titleView: {
                         html: this.currentSubtitle ? '<b>' + title + '</b><br><small><font color="lightgray">' + this.currentSubtitle + '</small></font>' : title
                     }
@@ -167,7 +167,7 @@ function CAppWindow<T extends BaseClass<BaseWindow>>(baseClass: T) {
                         }
                     });
                 } else {
-                    this.tiProxy.title = title;
+                    this.getTiProxy().title = title;
                 }
             }
         }
@@ -209,10 +209,10 @@ function CAppWindow<T extends BaseClass<BaseWindow>>(baseClass: T) {
             // console.log('setColors2');
             this.prepareSetColorsParams(colors, params);
             if (this.isOpened) {
-                this.tiProxy.applyProperties(params);
+                this.getTiProxy().applyProperties(params);
             } else {
                 params.duration = 300;
-                this.tiProxy.animate(params);
+                this.getTiProxy().animate(params);
             }
             return colors;
         };
@@ -279,8 +279,8 @@ export function LoadingIndicator<T extends { new (...args: any[]): AppWindow; in
                 };
             }
             this.loadingView.startLoading(_args);
-            this.tiProxy.add(this.loadingView.tiProxy);
-            this.loadingView.tiProxy.animate({
+            this.getTiProxy().add(this.loadingView.getTiProxy());
+            this.loadingView.getTiProxy().animate({
                 from: {
                     opacity: 0
                 },
@@ -306,7 +306,7 @@ export function LoadingIndicator<T extends { new (...args: any[]): AppWindow; in
             if (this.listView && this.listView.doneLoading) {
                 this.listView.doneLoading();
             }
-            this.loadingView.tiProxy.animate(
+            this.loadingView.getTiProxy().animate(
                 {
                     opacity: 0,
                     duration: 200

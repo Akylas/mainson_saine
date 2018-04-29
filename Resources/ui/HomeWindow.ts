@@ -321,7 +321,7 @@ export default class HomeWindow extends AppWindow {
         //     ]
         // });
         // this.setColors('blue');
-        // (this.tiProxy.getRProxy() as this).setColors('red');
+        // (this.getTiProxy().getRProxy() as this).setColors('red');
 
         let isFocused = false;
         var startAnimation = () => {
@@ -479,7 +479,7 @@ export default class HomeWindow extends AppWindow {
             // console.log('sharedElements', addOpenArgs.sharedElements);
             for (let key in addOpenArgs.sharedElements) {
                 // console.log('addSharedElement', key, addOpenArgs.sharedElements[key]);
-                win.tiProxy.addSharedElement(addOpenArgs.sharedElements[key], key);
+                win.getTiProxy().addSharedElement(addOpenArgs.sharedElements[key], key);
             }
             delete addOpenArgs.sharedElements;
         }

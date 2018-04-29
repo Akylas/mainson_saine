@@ -235,7 +235,7 @@ export default class FullscreenImageWindow extends BottomToolbar(TopToolbar(AppW
     constructor(_args) {
         super(FullscreenImageWindow.initArgs(_args));
 
-        this.topRect = app.ui.topWindow.tiProxy.rect;
+        this.topRect = app.ui.topWindow.getTiProxy().rect;
         this.container.scrollableView
             .on('scale', this.onScale)
             // .on('singletap', this.onSingleTap)

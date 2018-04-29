@@ -448,7 +448,7 @@ app.ui.openWindow(win);
 //         click:function(e){tiwin.close(); tiwin = null}
 //     }
 // });
-// let tiwin = testWin.tiProxy;
+// let tiwin = testWin.getTiProxy();
 // tiwin.on('close', function() {
 //     testWin.clearProxy();
 //     testWin = null;

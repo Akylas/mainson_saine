@@ -62,14 +62,14 @@ export default class AppTabView extends View {
                                 newTab.focus();
                             }
                         }
-                        this.tiProxy.emit('change', e);
+                        this.getTiProxy().emit('change', e);
                     }
                 },
                 change: e => {
                     if (!e.hasOwnProperty('currentPage')) {
                         return;
                     }
-                    this.tiProxy.emit('change', e);
+                    this.getTiProxy().emit('change', e);
                     this.currentView = e.view;
                     if (loadedTabs.indexOf(e.currentPage) === -1) {
                         loadedTabs.push(e.currentPage);
@@ -129,7 +129,7 @@ export default class AppTabView extends View {
         if (this.currentPage != _index) {
             this.pager.scrollToView(_index);
         } else {
-            this.tiProxy.emit('tab_should_go_back', { index: _index, view: this.pager.views[_index] });
+            this.getTiProxy().emit('tab_should_go_back', { index: _index, view: this.pager.views[_index] });
         }
     }
     setTabs(_tabs: Tabs) {

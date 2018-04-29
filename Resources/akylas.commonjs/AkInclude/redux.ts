@@ -27,6 +27,7 @@ declare global {
         on(name: string, callback: Function): this;
         off(name: string, callback: Function): this;
         emit(name: string, arg?: any): this;
+        getTiProxy():T & { [k: string]: any };
     }
 }
 
@@ -48,59 +49,40 @@ function createTiClass(redux, namespace, type, constructorName) {
             if (!args || !args.constructorNames) {
                 args = redux.style([constructorName], args || {});
             }
-            // let results = args.constructorNames || theClass.prepareArgs(this);
-            // theClass.prepareArgs(args);
-            // results.push(constructorName);
-            // console.log('testTi', args.constructorNames, results, namespace, constructorName, type);
-
-            // if (args) args.constructorNames = results;
-            // console.log('testTi',namespace, type, constructorName,  args, this);
-            // return new Proxy(Ti[namespace]['create' + type](args), {});
-            // this.__initArgs = args;
             let tiObject = Ti[namespace]['create' + type](args);
-            // tiObject.getRProxy = this.getThis
-            weakMap.set(this,tiObject);
-            weakMap.set(tiObject,this);
-            // this.tiProxy = Ti[namespace]['create' + type](args);
+            // weakMap.set(this,tiObject);
+            // weakMap.set(tiObject,this);
+            return tiObject;
         }
         get tiProxy() {
-            // if (!weakMap.has(this)) {
-            //     // let tiObject = Ti[namespace]['create' + type](this.__initArgs);
-            //     weakMap.set(this,tiObject);
-            //     weakMap.set(tiObject,this);
-            // }
             return weakMap.get(this);
         }
-        // getThis = ()=>{this}
+        getTiProxy = ()=>{
+            console.log('getTiProxy', this);
+            return this.tiProxy || this
+        }
         clearProxy=()=> {
-            let tiProxy = weakMap.get(this);
-            console.log('clearProxy', tiProxy)
-            if (tiProxy) {
-                weakMap.delete(tiProxy);
-                weakMap.delete(this);
-            }
-
-            // if (this.__tiProxy) {
-            //     this.__tiProxy.getRProxy = null;
-            //     this.__tiProxy = null;
-            //     this.__initArgs = null;
+            // let tiProxy = weakMap.get(this);
+            // if (tiProxy) {
+            //     weakMap.delete(tiProxy);
+            //     weakMap.delete(this);
             // }
         }
-        on(name: string, callback: Function) {
-            this.tiProxy && this.tiProxy.on(name, callback);
-            return this;
-        }
-        off(name: string, callback: Function) {
-            this.tiProxy && this.tiProxy.off(name, callback);
-            return this;
-        }
-        emit(name: string, callback: Function) {
-            this.tiProxy && this.tiProxy.emit(name, callback);
-            return this;
-        }
+        // on(name: string, callback: Function) {
+        //     this.tiProxy && this.tiProxy.on(name, callback);
+        //     return this;
+        // }
+        // off(name: string, callback: Function) {
+        //     this.tiProxy && this.tiProxy.off(name, callback);
+        //     return this;
+        // }
+        // emit(name: string, callback: Function) {
+        //     this.tiProxy && this.tiProxy.emit(name, callback);
+        //     return this;
+        // }
 
         getBind<T>(bindId:string) {
-            return this.tiProxy && this.tiProxy[bindId] as T;
+            return this.getTiProxy() && this.getTiProxy()[bindId] as T;
         }
         static tiname = constructorName;
     };
@@ -759,7 +741,7 @@ export default class Redux {
     };
     prepareClassArgs = (_args, Class) => {
         let results = getClassTree(Class);
-        console.log('prepareClassArgs', results);
+        // console.log('prepareClassArgs', results);
         _args = this.style(results, _args);
         _args.constructorNames = results;
         // console.log('preparedClassArgs', _args);

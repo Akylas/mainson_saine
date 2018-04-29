@@ -61,7 +61,7 @@ function CBaseWindow<T extends BaseClass<TiWindow>>(baseClass: T) {
             if (_args.showBackButton === true) {
                 this.shouldShowBackButton(_args.ownBackButtonTitle);
             }
-            this.tiProxy.on('open', () => {
+            this.getTiProxy().on('open', () => {
                 if (!this.isOpened) {
                     this.isOpened = true;
                     if (this.onOpen) {
@@ -73,7 +73,7 @@ function CBaseWindow<T extends BaseClass<TiWindow>>(baseClass: T) {
             });
         }
         shouldShowBackButton = _backTitle => {
-            const proxy = this.tiProxy;
+            const proxy = this.getTiProxy();
             if (!proxy.leftNavButton) {
                 if (__APPLE__) {
                     proxy.leftNavButton = ak.ti.style({
@@ -107,7 +107,7 @@ function CBaseWindow<T extends BaseClass<TiWindow>>(baseClass: T) {
         };
         onBack = e => {
             if (__ANDROID__) {
-                if (this.tiProxy.exitOnBack === true) {
+                if (this.getTiProxy().exitOnBack === true) {
                     app.closeApp();
                 } else {
                     this.closeMe();
@@ -159,7 +159,7 @@ export class BaseNavWindow extends CBaseWindow(NavigationWindow) {
             _win = new AppWindow(_win as TiDict);
         }
         const theWin = _win as AppWindow;
-        const winProxy = theWin.tiProxy;
+        const winProxy = theWin.getTiProxy();
         _args = _args || {};
         var manager: BaseNavWindow = (_args.manager || this) as BaseNavWindow;
         delete _args.manager;
@@ -186,10 +186,10 @@ export class BaseNavWindow extends CBaseWindow(NavigationWindow) {
         theWin.manager = manager;
     };
     openWindow(win, params?) {
-        this.tiProxy.openWindow(win.tiProxy, params);
+        this.getTiProxy().openWindow(win.getTiProxy(), params);
     }
     closeWindow(win, params?) {
-        this.tiProxy.closeWindow(win.tiProxy, params);
+        this.getTiProxy().closeWindow(win.getTiProxy(), params);
     }
     // createManagedWindow(_constructor: string, _args2?: TiDict) {
     //     _args2 = _args2 || {};
@@ -231,11 +231,11 @@ export function WithLoading<T extends ViewConstructor<View>>(Base: T) {
             ]
         });
         showLoading = () => {
-            this.tiProxy.add(this.indicator.tiProxy);
+            this.getTiProxy().add(this.indicator.getTiProxy());
         };
 
         hideLoading = () => {
-            this.tiProxy.remove(this.indicator.tiProxy);
+            this.getTiProxy().remove(this.indicator.getTiProxy());
         };
     };
 }

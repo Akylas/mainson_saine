@@ -25,11 +25,11 @@ export default class AnimatedWindow extends TiWindow {
         this.handleOpen = this.handleClose = true;
         this._opened = false;
         this._closing = false;
-        this.tiProxy.on('open', this.onWinOpen);
+        this.getTiProxy().on('open', this.onWinOpen);
     }
 
     onWinOpen = () => {
-        this.tiProxy.animate(this.openArgs, function() {
+        this.getTiProxy().animate(this.openArgs, function() {
             app.ui.windowSignalsOpened(self);
         });
         if (this.onShow) {
@@ -44,7 +44,7 @@ export default class AnimatedWindow extends TiWindow {
         if (this.beforeShow) {
             this.beforeShow();
         }
-        this.tiProxy.applyProperties(this.closeArgs);
+        this.getTiProxy().applyProperties(this.closeArgs);
         app.ui.openWindow(this, { animated: false });
     };
     hideMe = () => {
@@ -56,7 +56,7 @@ export default class AnimatedWindow extends TiWindow {
             this.onHide();
         }
         if (this.closeInOnHide !== true) {
-            this.tiProxy.animate(this.closeArgs, function() {
+            this.getTiProxy().animate(this.closeArgs, function() {
                 app.ui.closeWindow(this, { animated: false });
                 this._closing = false;
             });

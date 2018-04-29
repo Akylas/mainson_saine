@@ -87,7 +87,7 @@ export default class AKWindowManager implements AK.IWindowManager {
 
     _openWindow = (_win: BaseAnimatedWindow, _args?: TiDict) => {
         var winManager = _win.winManager || this;
-        const winTi = _win.tiProxy;
+        const winTi = _win.getTiProxy();
 
         if (winTi.akmanaged !== true) {
             winTi.winId = this._winId++;
@@ -171,10 +171,10 @@ export default class AKWindowManager implements AK.IWindowManager {
         }
 
         var winManager = _win.winManager || this;
-        console.debug('openWindow_args.winManager', _args.title, _win.tiProxy.title, _args);
+        console.debug('openWindow_args.winManager', _args.title, _win.getTiProxy().title, _args);
         var callback = _args.callback as Function;
         delete _args.callback;
-        const winTi = _win.tiProxy;
+        const winTi = _win.getTiProxy();
 
         if (_dontCheckOpening !== true) {
             winManager.handlingOpening = true;
@@ -195,7 +195,7 @@ export default class AKWindowManager implements AK.IWindowManager {
         if (_win.hideMe && !_win._closing) {
             _win.hideMe();
         } else {
-            const winTi = _win.tiProxy;
+            const winTi = _win.getTiProxy();
             if (!winTi) {
                 return;
             }

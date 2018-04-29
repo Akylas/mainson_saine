@@ -34,7 +34,7 @@ function CAppListView<T extends BaseClass<ListView>>(baseClass: T) {
         this.init(args[0]);
     }
     get sections() {
-        return this.tiProxy.sections;
+        return this.getTiProxy().sections;
     }
     init(_args) {
         this.pullToRefresh = _args.pullView;
@@ -118,7 +118,7 @@ export function WithListView<T extends ViewConstructor<AppWindow>>(Base: T) {
 
             if (_args.listViewArgs) {
                 this.listView = new theClass(_args.listViewArgs);
-                this.container.add(this.listView.tiProxy);
+                this.container.add(this.listView.getTiProxy());
             } else if (_args.templates) {
                 this.headerTemplate = ak.ti.style({
                     type: 'Ti.UI.Label',
@@ -147,7 +147,7 @@ export function WithListView<T extends ViewConstructor<AppWindow>>(Base: T) {
                 }
                 this.listView = new theClass(listargs);
 
-                this.container.add(this.listView.tiProxy);
+                this.container.add(this.listView.getTiProxy());
                 this.hasContentLoading = true;
             }
         }
@@ -205,7 +205,7 @@ export function WithListView<T extends ViewConstructor<AppWindow>>(Base: T) {
             if (this.editing == value) {
                 return;
             }
-            this.tiProxy.blur();
+            this.getTiProxy().blur();
             this.editing = value;
             if (!this.editing) {
                 this.deselectItems();

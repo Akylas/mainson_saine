@@ -21,7 +21,7 @@ export default class AppTabController extends View {
             this.tabRClass = _args.tabRClass;
         }
         const rclassContainer = _args.rclassContainer || 'AppTabControllerContainer';
-        this.tiProxy.add(
+        this.getTiProxy().add(
             ak.ti.style({
                 type: 'Ti.UI.View',
                 bindId: 'container',
@@ -34,12 +34,12 @@ export default class AppTabController extends View {
         if (_args.labels) {
             ak.ti.add(this.container, this.prepareTabs(_args.labels));
         }
-        this.tiProxy.on('click', _event => {
+        this.getTiProxy().on('click', _event => {
             // console.log('on tab view click');
-            if (this.tiProxy.containsView(_event.source) && _event.source.index !== undefined) {
+            if (this.getTiProxy().containsView(_event.source) && _event.source.index !== undefined) {
                 // console.log('on tab2 view click');
                 this.setIndex(_event.source.index);
-                this.tiProxy.emit('request_tab', {
+                this.getTiProxy().emit('request_tab', {
                     index: _event.source.index
                 });
             }
@@ -73,12 +73,12 @@ export default class AppTabController extends View {
     };
 
     setLabels (_tabs:string[]) {
-        this.tiProxy.removeAllChildren();
-        this.tiProxy.add(this.prepareTabs(_tabs));
+        this.getTiProxy().removeAllChildren();
+        this.getTiProxy().add(this.prepareTabs(_tabs));
     };
 
     addTab = _title => {
-        this.tiProxy.add(this.prepareTabs([_title]));
+        this.getTiProxy().add(this.prepareTabs([_title]));
     };
 
     setIndex (_index:number){

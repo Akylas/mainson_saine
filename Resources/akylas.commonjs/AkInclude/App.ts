@@ -363,7 +363,7 @@ export default class AKApp extends EventEmitter {
     }
 
     closeApp() {
-        app.ui.rootWindow && app.ui.rootWindow.tiProxy.close();
+        app.ui.rootWindow && app.ui.rootWindow.getTiProxy().close();
     }
 
     getImage?(path: string): Promise<any> {

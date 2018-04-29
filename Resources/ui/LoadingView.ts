@@ -70,7 +70,7 @@ export default class LoadingView extends View {
         _args = _args || {};
         let computing = !!_args.computing;
         console.log('startLoading', _args);
-        this.tiProxy.applyProperties(
+        this.getTiProxy().applyProperties(
             Object.assign(
                 {
                     label: {
@@ -92,7 +92,7 @@ export default class LoadingView extends View {
     };
     updateLoading = _args => {
         console.log('updateLoading', _args);
-        this.tiProxy.applyProperties(
+        this.getTiProxy().applyProperties(
             Object.assign(_args, {
                 duration: 100
             })

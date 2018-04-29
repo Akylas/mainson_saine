@@ -18,12 +18,12 @@ export default class MainWindow extends AppNavWindow {
         _args.window = new HomeWindow({
             showLeftMenuButton: true
             // winGCId: FIRST_WINDOW
-        }).tiProxy;
+        }).getTiProxy();
         return _args;
     }
     constructor(_args) {
         super(MainWindow.initArgs(_args));
-        windows[FIRST_WINDOW] = ak.ti.getRProxy(this.tiProxy.window) as AppWindow;
+        windows[FIRST_WINDOW] = ak.ti.getRProxy(this.getTiProxy().window) as AppWindow;
     }
 
     handleOpenWindow = (type, _args?, _key?) => {

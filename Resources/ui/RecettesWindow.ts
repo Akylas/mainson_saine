@@ -29,23 +29,6 @@ function prepareSections(recettes: RecetteData[], roomColor) {
     ];
 }
 
-class A {
-    test1() {
-        console.log('adssadg');
-    }
-}
-
-class B extends A {
-    test2() {}
-}
-
-class C extends B {
-    test4() {}
-}
-
-const myTest = new C();
-myTest.test1();
-
 export default class RecettesWindow extends CustomNavBar(TopToolbar(AppWindow)) {
     static initArgs(_args: RecetteWinParams, recettes?: RecetteData[]) {
         // console.debug('RecettesWindow', 'initArgs', _args)

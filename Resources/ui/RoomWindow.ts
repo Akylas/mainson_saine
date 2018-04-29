@@ -260,7 +260,7 @@ export default class RoomWindow extends AppWindow {
                             labels: ['novice', 'moyen', 'expert'],
                             bubbleParent: true,
                             bottom: app.deviceinfo.isIPhoneX ? 20 : 0
-                        }).tiProxy
+                        }).getTiProxy()
                     ]
                 }
             ]
@@ -271,7 +271,7 @@ export default class RoomWindow extends AppWindow {
         super(RoomWindow.initArgs(_args, room));
         this.roomData = room;
         this.roomColor = _args.roomColor;
-        this.tiProxy.animate({
+        this.getTiProxy().animate({
             listView: {
                 delay: 200,
                 opacity: 1,
@@ -298,8 +298,8 @@ export default class RoomWindow extends AppWindow {
             // if (offset <= TitleHeaderTop - $.navBarTop + 40) {
             const b = Math.min(Math.max(offset / (TitleHeaderTop - $.navBarTop), 0), 1);
             const c = 1 - b;
-            this.tiProxy &&
-                this.tiProxy.applyProperties({
+            this.getTiProxy() &&
+                this.getTiProxy().applyProperties({
                     headerView: {
                         opacity: c
                     },
