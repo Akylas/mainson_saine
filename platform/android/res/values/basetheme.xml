@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseTheme.ActionBarStyle.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#A91E22</item>
+    </style>
+
+    <style name="BaseTheme.ActionBarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="titleTextStyle">@style/BaseTheme.ActionBarStyle.TitleTextStyle</item>
+        <item name="colorControlNormal">#A91E22</item>
+    </style>
+
+    <style name="BaseTheme.AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#A91E22</item><item name="android:textColorPrimary">#A91E22</item>
+    </style>
+    <style name="ToolbarStyle" parent="@style/Widget.AppCompat.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+    </style>
+
+    <style name="BaseTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="actionBarTheme">@style/BaseTheme.ActionBarStyle</item>
+        <item name="actionBarStyle">@style/BaseTheme.ActionBarStyle</item>
+        <item name="alertDialogTheme">@style/BaseTheme.AlertDialogStyle</item>
+        <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
+        <item name="colorAccent">#7dd0f8</item>
+        <item name="android:textColorSecondary">#7dd0f8</item>
+        <item name="colorControlNormal">#7dd0f8</item>
+        <item name="colorControlActivated">#7dd0f8</item>
+        <item name="colorControlHighlight">#7dd0f8</item>
+        <item name="colorPrimary">#7dd0f8</item>
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">#7dd0f8</item>
+    </style>
+    <!-- SplashScreen theme -->
+    <style name="Theme.Titanium.SplashScreen" parent="Theme.Titanium.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+</resources>

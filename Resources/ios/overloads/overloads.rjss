@@ -1,0 +1,47 @@
+Window {
+    /* statusBarStyle: Titanium.UI.iOS.StatusBar.DEFAULT */
+    statusBarStyle: Titanium.UI.iOS.StatusBar.LIGHT_CONTENT
+}
+RoomWindow {
+    /* statusBarStyle: Titanium.UI.iOS.StatusBar.LIGHT_CONTENT */
+}
+
+.RecetteRow {
+     backgroundSelectedColor: $.cTheme.color,
+   viewShadow:{
+        radius:0.5,
+        offset:[0,1],
+        color:'#88333333'
+    }
+}
+
+.InternalElevatedView {
+    viewShadow:{
+        radius:1.5,
+        offset:[0,1],
+        color:'#88333333'
+    }
+}
+
+Window {
+    /*statusBarStyle: Titanium.UI.iOS.StatusBar.LIGHT_CONTENT,*/
+    navTintColor:$.cTheme.color,
+    titleAttributes:{
+        color:$.cTheme.color
+    },
+    /*extendEdges: [Ti.UI.EXTEND_EDGE_ALL],*/
+    hideShadow:true,
+    translucent:false
+}
+
+
+/* [app.deviceinfo.isIPhoneX] {
+    
+    AppWindow {
+        containerClass:'WindowContainer'
+    }
+    .WindowContainer {
+        top:0,
+        bottom:20
+    }
+} */

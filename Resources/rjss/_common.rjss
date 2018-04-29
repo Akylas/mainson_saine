@@ -1,0 +1,212 @@
+Window, NavigationWindow {
+    backgroundColor: $.white, 
+    navBarHidden:true, 
+    orientationModes:[Ti.UI.UPSIDE_PORTRAIT, Ti.UI.PORTRAIT], 
+    barColor:$.cTheme.darkest
+}
+
+AppWindow {
+    showBackButton:true, showLeftMenuButton:false
+}
+
+
+
+
+ScrollView {
+    contentHeight: 'size', verticalBounce:true
+}
+
+MainWindow {
+    title: 'MAIN_WINDOW', 
+    /* opacity:1, */
+    mainWindow:true, 
+    navWindow:true
+}
+
+RoomWindow {
+    opacity:1,
+}
+
+HomeWindow {
+    backgroundColor:$.cTheme.color
+}
+
+.ElevatedView {
+    rclass: 'InternalElevatedView', borderRadius:3, backgroundColor:$.white,
+}
+
+Label, TextField {
+    font:{
+        family:$.sFontFamily
+    }
+}
+
+TextField {
+    autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE, autocorrect:false,
+}
+
+ListView {
+    allowsSelection: false, unHighlightOnSelect: false, delaysContentTouches:false, separatorStyle:0, stickyHeaders:true
+    /*rowHeight:40*/
+}
+
+CollectionView {
+    allowsSelection: false, backgroundColor:'transparent', unHighlightOnSelect: false,
+}
+
+ImageView {
+    scaleType: Ti.UI.SCALE_TYPE_ASPECT_FILL,
+    retina:app.deviceinfo.isRetina,
+    localLoadSync:true,
+    onlyTransitionIfRemote: true,
+    preventDefaultImage:true,
+    /* transition: { */
+        /*style: Ti.UI.TransitionStyle.FADE*/
+    /* } */
+}
+
+
+.BottomSeparatorView {
+    borderColor: '#dddddd88', borderPadding:[-1, -1, 0, -1],
+}
+
+.LoadingViewIndicator {
+    top: 20, bottom:20, left:20, right:20, style:Ti.UI.ActivityIndicatorStyle.BIG, color:$.cTheme.color
+}
+
+
+.TopToolbar {
+    /* rclass:'ElevatedView', */
+    borderRadius:0,
+    top: 0,
+    zIndex:10
+}
+
+.LogoLabel {
+    borderColor: $.cTheme.color,
+    borderWidth: 6,
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    color: $.black,
+    textAlign: 'center',
+    font: {
+        size: 26
+    }
+}
+
+.Icon {
+    color:$.white,
+    touchEnabled:false,
+    left:10,
+    font: {
+        size: 17, family:$.iconicfontfamily
+    }
+}
+
+.BottomToolbar {
+    height: $.toolbarHeight, layout:'horizontal', bottom:0, zIndex:100
+}
+
+.BottomToolbarThemed {
+    backgroundColor:$.cTheme.color, 
+    rclass: 'BottomToolbar InversedElevatedView'
+}
+
+
+FullscreenImageWindow {
+    customNavBar:false,
+    dontElevateTopBar:true,
+    fullscreen:true,
+    verticalContainer:false,
+    backgroundColor:'transparent',
+    bottomToolbarRclass:'BottomToolbar',
+    modal:false,
+    winOpeningArgs: {
+        from: {
+            opacity: 0,
+        }
+        ,
+        to: {
+            opacity: 1,
+        }
+        ,
+        duration: 300
+    }
+    ,
+    winClosingArgs: {
+        opacity: 0, duration: 300
+    }
+}
+
+.ImageWindowImageView {
+    transition: {
+        style: Ti.UI.TransitionStyle.FADE
+    }
+    ,
+    localLoadSync:false,
+    onlyTransitionIfRemote: false,
+    width:'FILL',
+    height:'FILL'
+}
+
+.BottomToolbarButton {
+    rclass: 'NavBarRightButton',
+    font: { size: 15, family: null },
+    padding:[0,5,0,5],
+    width: 'size',
+    height: $.navBarHeight,
+    top:0,
+    color: 'white'
+}
+
+AppTabController {
+    rclassTabOff:'AppTabOff',
+    rclassTabOn:'AppTabOn',
+    /*rclass:'BottomSeparatorView',*/
+    /* top:0, */
+    /* backgroundColor:'blue', */
+    height:$.toolbarHeight,
+    width:'80%'
+}
+
+.AppTabControllerContainer {
+    layout:'horizontal',
+    /* color:$.white, */
+    /* indicatorColor:$.white */
+}
+
+
+.AppTabOff {
+    /*font: {size:14, weight:'normal'}*/
+}
+.AppTabOn {
+    /*font: {size:14, weight:'bold'}*/
+}
+
+.AppTab {
+    font: {size:17, family:$.sFontFamilyBold},
+    width:'fill',
+    height:'fill',
+    textAlign:'center',
+    borderDisabledColor:$.white,
+    borderSelectedColor:$.white,
+    borderColor:'transparent',
+    borderWidth:3,
+    borderPadding:[0,-4,0,-4],
+    color:'#ffffff88',
+    disabledColor:$.white,
+    selectedColor:$.white
+}
+
+.RecetteRow {
+    width:'fill',
+    sizeRatio: 1.6,
+    backgroundColor: $.white,
+    borderRadius: 4,
+    left: 5,
+    right: 5,
+    top: 5,
+    bottom: 5,
+    layout: 'vertical'
+}

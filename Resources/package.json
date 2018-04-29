@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "source-map-support": "^0.5.4",
+    "tinycolor2": "^1.4.1"
+  }
+}

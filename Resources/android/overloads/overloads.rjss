@@ -1,0 +1,27 @@
+Window, SlideMenu {
+    statusBarColor:$.cTheme.darkest,
+}
+
+RecetteWindow {
+   actionBarOverlay:true,
+   activityEnterTransition:Ti.UI.Android.TRANSITION_EXPLODE,
+   activityReturnTransition:Ti.UI.Android.TRANSITION_EXPLODE,
+    /* activityReturnTransition:{type:Ti.UI.Android.TRANSITION_EXPLODE, duration:5000, epiCenter:{x:0,y:0,width:$.width, height:$.height}} */
+}
+
+.InternalElevatedView {
+    elevation:3,
+}
+
+.RecetteRow {
+    selector: 'true',
+    elevation:1
+}
+
+AppWindow {
+    androidDontUseNavWindow:true,
+}
+
+.NavBarButton {
+    borderRadius:($.nbButtonWidth  / 2),
+}

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "preserveConstEnums": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "outDir": "build/ts",
+        "noImplicitUseStrict": true,
+        "baseUrl": "./",
+        "paths": {
+            "*": ["*", "Resources/*"]
+        }
+    },
+    "include": ["Resources/**/*.ts"]
+}

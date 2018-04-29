@@ -1,0 +1,16 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+description: nodejs
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2016 by Your Company
+
+# these should not be edited
+name: akylas-nodejs
+moduleid: akylas.nodejs
+guid: 11dfa4d5-75b5-43d4-b67f-825d15f4f665
+platform: commonjs
+minsdk: 6.1.0.AKYLAS

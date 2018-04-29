@@ -1,0 +1,38 @@
+{
+    "titanium": {
+        "ignores": [
+            "**/{.,AUTHOR,COPYING,INSTALL,NEWS,PORTING,CHANGELOG,CONTRIBUTION,ChangeLog,Makefile,README,readme,LICENSE,sample,example,demo,htdocs,composer.json,gulpfile}*",
+            "**/{obj,obj.target,test,tests,doc,docs,msvc,Xcode,bin}{,/**/*}",
+            "**/*.{sublime-workspace,o,hprof,orig,pyc,pyo,rbc,swp,sln,dsp,dsw,cmd,vcproj,vcxproj,vcxproj.filters,pdb,exp,obj,lib,md,sh,gypi,gyp,h,cpp,yml,log,tlog,d.ts,Makefile,mk,c,cc,rc,xcodeproj,xcconfig,lock}",
+            "**/node_modules/**/*browser*",
+            "**/node_modules/**/*.{html,sql}",
+            "**/node_modules/lodash/!(package.json|lodash.js)*",
+            "**/node_modules/moment/{min,src,package.js,ender.js}{,/**/*}",
+            "**/node_modules/moment/locale/!(fr.js)",
+            "**/node_modules/moment-timezone/{builds}{,/**/*}",
+            "**/node_modules/moment-timezone/data/{meta,unpacked}{,/**/*}",
+            "**/node_modules/source-map/dist{,/**/*}",
+            "**/node_modules/tinycolor2/dist{,/**/*}",
+            "**/yaku.core.js"
+        ]
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.106",
+        "@types/moment": "^2.13.0",
+        "@types/node": "^9.6.0",
+        "@types/tinycolor": "^1.1.27",
+        "awesome-typescript-loader": "~5.0.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-es2015": "^6.24.1",
+        "typescript": "~2.8.3",
+        "uglifyjs-webpack-plugin": "~1.2.5",
+        "uglifyjs2": "0.0.1",
+        "webpack": "~4.6.0",
+        "webpack-bundle-analyzer": "^2.11.1",
+        "webpack-cli": "^2.0.14"
+    },
+    "dependencies": {
+        "ts-loader": "^4.2.0",
+        "tsconfig-paths-webpack-plugin": "^3.0.4"
+    }
+}

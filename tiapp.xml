@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <sdk-version>7.3.0.AKYLAS</sdk-version>
+    <id>com.akylas.maisonsaine</id>
+    <name>Maison Saine</name>
+    <version>1.0</version>
+    <publisher>Akylas</publisher>
+    <url>http://www.akylas.fr</url>
+    <description></description>
+    <copyright>2018 by Akylas</copyright>
+    <icon>appicon.png</icon>
+    <analytics>false</analytics>
+    <guid>ba753164-aa29-445c-a239-5666c152a76e</guid>
+    <use-babel>false</use-babel>
+    <compile-js>false</compile-js>
+    <minify-js>false</minify-js>
+    <use-webpack>false</use-webpack>
+    <property name="ti.ui.defaultunit">dip</property>
+    <ios/>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest android:installLocation="auto" android:versionCode="130">
+            <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="26" />
+            <application android:hardwareAccelerated="true">
+            </application>
+        </manifest>
+        <abi>armeabi-v7a</abi>
+    </android>
+    <ios>
+        <use-jscore-framework>true</use-jscore-framework>
+        <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
+        <default-background-color>#D1EDF7</default-background-color>
+        <use-app-thinning>false</use-app-thinning>
+        <min-ios-ver>10.0</min-ios-ver>
+        <plist>
+            <dict>
+                <key>UIViewControllerBasedStatusBarAppearance</key>
+                <false/>
+                <key>CFBundleVersion</key>
+                <string>17</string>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <true/>
+                <key>CFBundleLocalizations</key>
+                <array>
+                    <string>fr</string>
+                </array>
+            </dict>
+        </plist>
+    </ios>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">true</target>
+        <target device="iphone">true</target>
+    </deployment-targets>
+    <plugins>
+        <plugin>akylas.nodejs</plugin>
+        <plugin>rjss</plugin>
+    </plugins>
+    <modules>
+        <!-- <module>hyperloop</module> -->
+        <!-- <module>akylas.commonjs</module> -->
+        <module>akylas.zoomableimage</module>
+        <module platform="iphone">akylas.statusbarnotification</module>
+    </modules>
+    <property name="run-on-main-thread" type="bool">true</property>
+    <property name="ti.android.fastdev" type="bool">false</property>
+    <property name="ti.hexColorFormat">rgba</property>
+    <property name="ti.android.debug" type="bool">false</property>
+    <property name="ti.android.bug2373.finishfalseroot" type="bool">true</property>
+    <property name="akylas.modules.key">89cbe81ec60baf603c4e470c110b45085da01f57</property>
+</ti:app>

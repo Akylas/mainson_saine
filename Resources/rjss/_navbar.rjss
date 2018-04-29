@@ -1,0 +1,78 @@
+
+.NavBar {
+    top:0,
+    backgroundColor:$.cTheme.darkest,
+    zIndex:100,
+    /*rclass:'ElevatedView'*/
+}
+
+.NavBarHolder {
+    top:__APPLE__?$.navBarTop:0 ,
+    height:$.navBarHeight,
+}
+
+.NBButton {
+    /*selectedColor:$.gray,*/
+    color:$.white,
+    textAlign:'center',
+    minWidth:$.nbButtonWidth,
+    height:$.nbButtonWidth,
+    verticalAlign:'middle'
+}
+
+.NavBarButton {
+    rclass:'NBButton',
+    /*backgroundColor:'red',*/
+    width:$.nbButtonWidth,
+    padding:{left:5,right:5},
+    font:{size:26, family:$.iconicfontfamily},
+}
+
+.NavBarRightButton {
+    rclass:'NavBarButton',
+    /*textAlign:'right'*/
+}
+
+
+.ToolbarButton {
+    rclass:'NavBarButton',
+    width:60,
+}
+
+.NavBarButtonSeparator {
+    backgroundColor:'#ffffff55',
+    width:1,
+    height:20,
+}
+
+.NavBarLeftButton {
+    rclass:'NavBarButton',
+    /*textAlign:'left'*/
+}
+
+.NBBackButton {
+    rclass:'NavBarButton',
+    /*textAlign:'left'*/
+}
+
+.NBTitle {
+    color:$.white,
+    maxLines:2,
+    height:$.navBarHeight,
+    touchEnabled:false,
+    ellipsize:Ti.UI.TEXT_ELLIPSIZE_TAIL,
+    font:{
+        size: 18,
+        family: $.sFontFamilyBlack
+    }
+}
+
+#menuBtn {
+   rclass:'NavBarLeftButton',
+   title:$.sMenu,
+}
+
+#closeBtn {
+   rclass:'NavBarLeftButton',
+   title:$.sClose
+}
