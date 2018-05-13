@@ -273,7 +273,7 @@ export default class FullscreenImageWindow extends BottomToolbar(TopToolbar(AppW
                 }
             ]
         };
-        this.on('open', () => {
+        this.getTiProxy().on('open', () => {
             if (__APPLE__) {
                 this.getCurrentView().animate({
                     left: null,
@@ -284,7 +284,7 @@ export default class FullscreenImageWindow extends BottomToolbar(TopToolbar(AppW
                 });
             }
         });
-        this.on('click', e => {
+        this.getTiProxy().on('click', e => {
             var callbackId = e.source.callbackId;
             switch (callbackId) {
                 case 'share':

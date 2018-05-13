@@ -81,7 +81,7 @@ export default class PullToRefresh extends View {
         this.listView.on('pull', this.reset);
         if (e.active === false) return;
         this.goToLoading();
-        this.emit('pulled');
+        this.getTiProxy().emit('pulled');
     };
     reset = () => {
         this.listView.off('pull', this.reset);

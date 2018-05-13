@@ -353,7 +353,7 @@ export default class HomeWindow extends AppWindow {
         //     }
         // });
 
-        this.on('focus', () => {
+        this.getTiProxy().on('focus', () => {
             // console.debug('MainWindow', 'focus');
             if (!isFocused) {
                 isFocused = true;

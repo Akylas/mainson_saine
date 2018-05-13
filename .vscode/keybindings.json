@@ -1,0 +1,19 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "cmd+b",
+        "command": "extension.tiBuild"
+    },
+    {
+        "key": "shift+cmd+b",
+        "command": "workbench.action.togglePanel"
+    },
+    {
+        "key": "cmd+r",
+        "command": "extension.tiRunLastBuild"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "extension.tiShowBuildHistory"
+    }
+]

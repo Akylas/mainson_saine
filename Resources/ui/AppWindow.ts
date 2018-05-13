@@ -618,7 +618,7 @@ export function CustomNavBar<T extends { new (...args: any[]): AppWindow; initAr
             super(initNavBarArgs(args));
             this.shouldShowBackButton = null;
             if (!!args[0].hasBackButton) {
-                app.onDebounce(this, 'click', e => {
+                app.onDebounce(this.getTiProxy(), 'click', e => {
                     if (e.callbackId === 'closeBtn') {
                         this.closeMe();
                     }

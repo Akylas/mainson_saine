@@ -363,7 +363,7 @@ export default class RoomWindow extends AppWindow {
         //         }
         //     ]
         // });
-        this.on('click', e => {
+        this.getTiProxy().on('click', e => {
             if (e.item) {
                 const item = e.item;
                 const callbackId = e.bindId || e.source.callbackId;

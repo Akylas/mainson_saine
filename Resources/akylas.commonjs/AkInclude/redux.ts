@@ -24,9 +24,9 @@ declare global {
         clearProxy()
         getBind<T>(bindID:string):T
         static setDefault(args);
-        on(name: string, callback: Function): this;
-        off(name: string, callback: Function): this;
-        emit(name: string, arg?: any): this;
+        // on(name: string, callback: Function): this;
+        // off(name: string, callback: Function): this;
+        // emit(name: string, arg?: any): this;
         getTiProxy():T & { [k: string]: any };
     }
 }
@@ -49,10 +49,11 @@ function createTiClass(redux, namespace, type, constructorName) {
             if (!args || !args.constructorNames) {
                 args = redux.style([constructorName], args || {});
             }
+            console.log('create TI obj', namespace, type, constructorName);
             let tiObject = Ti[namespace]['create' + type](args);
-            // weakMap.set(this,tiObject);
-            // weakMap.set(tiObject,this);
-            return tiObject;
+            weakMap.set(this,tiObject);
+            weakMap.set(tiObject,this);
+            // return tiObject;
         }
         get tiProxy() {
             return weakMap.get(this);
@@ -62,11 +63,11 @@ function createTiClass(redux, namespace, type, constructorName) {
             return this.tiProxy || this
         }
         clearProxy=()=> {
-            // let tiProxy = weakMap.get(this);
-            // if (tiProxy) {
-            //     weakMap.delete(tiProxy);
-            //     weakMap.delete(this);
-            // }
+            let tiProxy = weakMap.get(this);
+            if (tiProxy) {
+                weakMap.delete(tiProxy);
+                weakMap.delete(this);
+            }
         }
         // on(name: string, callback: Function) {
         //     this.tiProxy && this.tiProxy.on(name, callback);
@@ -760,6 +761,7 @@ export default class Redux {
         constructorName = constructorName || type;
         // const redux = this;
         const constructor = (context[constructorName] = createTiClass(this, namespace, type, constructorName));
+        console.log('addTitaniumNaturalConstructor', constructorName, constructor);
         // const constructor = context[constructorName] = this.createTiConstructor(context, namespace, constructorName, type );
         //   this.createTiConstructor(context, namespace, constructorName, type));
         // context[constructorName].setDefault = args => {
@@ -791,6 +793,7 @@ export default class Redux {
             if (isMultiple) {
                 const constructor = this.addTitaniumNaturalConstructor(context, key, value);
                 for (j = 1; j < current.length; j++) {
+                    console.log('addTitaniumNaturalConstructor alias', key, current[j], constructor);
                     context[current[j]] = constructor;
                 }
             } else {

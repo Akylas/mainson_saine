@@ -68,7 +68,7 @@ export default class RecettesWindow extends CustomNavBar(TopToolbar(AppWindow)) 
                 sections: prepareSections(recettes, roomColor)
             }
         });
-        this.on('click', e => {
+        this.getTiProxy().on('click', e => {
             // this.setColors(undefined);
             if (e.item) {
                 const item = e.item;

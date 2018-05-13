@@ -214,7 +214,7 @@ export default class RecetteWindow extends AppWindow {
         //     ]
         // });
 
-        this.on('click', e => {
+        this.getTiProxy().on('click', e => {
             if (e.item) {
                 const item = e.item;
             } else {
