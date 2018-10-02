@@ -1,0 +1,169 @@
+﻿
+@import './variables';
+.action-bar {
+    color: $background-color;
+    background-color: $dark-color;
+}
+
+.page {
+    background-color: $background-color;
+}
+
+.tab-view {
+    tab-background-color: $background-color;
+}
+
+.list-group,
+.list-group-item,
+.list-group .list-group-item {
+    background-color: $background-color;
+}
+
+.page label,
+.tab-view label {
+    color: $text-color;
+}
+
+.segmented-bar {
+    selected-background-color: $primary-color;
+    color: $primary-color;
+    background-color: $background-color;
+}
+
+.switch[checked='true'] {
+    color: $text-color;
+    background-color: $primary-color;
+}
+
+.activity-indicator {
+    color: $primary-color;
+}
+
+.slider {
+    color: $text-color;
+    background-color: $primary-color;
+}
+
+.progress {
+    color: $primary-color;
+}
+
+.img-circle {
+    border-radius: 20;
+}
+
+.list-group-item-heading {
+    font-size: 16;
+}
+
+.list-group-item-text {
+    font-size: 14;
+    color:$text-color-sub
+}
+
+.img-rounded {
+    border-radius: 5;
+}
+
+.body {
+    font-size: 14;
+}
+
+.h1 {
+    font-size: 36;
+}
+
+.h2 {
+    font-size: 30;
+}
+
+.h3 {
+    font-size: 24;
+}
+
+.h4 {
+    font-size: 18;
+}
+
+.h5 {
+    font-size: 14;
+}
+
+.h6 {
+    font-size: 12;
+}
+
+.page label.text-primary,
+.tab-view label.text-primary {
+    color: #30bcff;
+}
+
+.page label.bg-primary,
+.tab-view label.bg-primary {
+    background-color: #30bcff;
+}
+
+.page label.text-danger,
+.tab-view label.text-danger {
+    color: #d9534f;
+}
+
+.page label.bg-danger,
+.tab-view label.bg-danger {
+    background-color: #d9534f;
+}
+
+.page label.text-muted,
+.tab-view label.text-muted {
+    color: #a2a2a2;
+}
+
+.btn {
+    color: $primary-color;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    color: $text-color;
+}
+
+.btn-outline {
+    border-color: $primary-color;
+    background-color: transparent;
+    border-width: 1;
+    color: $primary-color;
+}
+
+.btn[isEnabled='false'] {
+    background-color: $disabled-color;
+    border-color: $disabled-color;
+    color: #787878;
+}
+
+.btn-rounded-sm {
+    border-radius: 4;
+}
+
+.btn-rounded-lg {
+    border-radius: 20;
+}
+
+.label {
+    font-size: 16;
+}
+
+.input {
+    font-size: 14;
+}
+
+.input-rounded {
+    border-radius: 30;
+}
+
+.tab-view {
+    selected-tab-text-color: $background-color;
+    tab-text-color: $background-color;
+    tab-background-color: $primary-color;
+    android-selected-tab-highlight-color: $background-color;
+}
