@@ -11,6 +11,3 @@ export const screenWidthDips = screen.mainScreen.widthDIPs;
 
 export const roomImageHeight = Math.round(screenHeightDips * 0.25);
 export const roomHeaderHeight = roomImageHeight + actionBarHeight;
-
-console.log('roomImageHeight',roomImageHeight);
-console.log('roomHeaderHeight',roomHeaderHeight);
