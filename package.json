@@ -12,12 +12,8 @@
       "version": "5.0.0-2018-09-28-195532-01"
     }
   },
-  "android": {
-    "v8Flags": "--expose_gc",
-    "markingMode": "none"
-  },
   "scripts": {
-    "pandroid": "tns build android --bundle --release --keyStorePath $KEYSTORE_PATH --keyStorePassword $KEYSTORE_PASS --keyStoreAlias KEYSTORE_ALIAS --keyStoreAliasPassword $KEYSTORE_PASS --env.uglify --env.production",
+    "pandroid": "cross-var tns build android --bundle --release --keyStorePath $KEYSTORE_PATH --keyStorePassword $KEYSTORE_PASS --keyStoreAlias $KEYSTORE_ALIAS --keyStoreAliasPassword $KEYSTORE_PASS --env.uglify --env.production",
     "pios": "tns build ios --bundle --release --env.uglify --env.aot --for-device --provision 'Maison Saine'"
   },
   "dependencies": {
@@ -45,6 +41,7 @@
     "babylon": "6.18.0",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
+    "cross-var": "^1.1.0",
     "css-hot-loader": "^1.4.2",
     "css-loader": "^1.0.0",
     "eslint": "^5.6.1",
