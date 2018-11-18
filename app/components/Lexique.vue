@@ -60,9 +60,10 @@ export default class Lexique extends BaseVueComponent {
     }
     refresh() {
         const folder = fileSystem.knownFolders.currentApp();
-        // photoViewer.showViewer(['file://' + fileSystem.path.join(folder.path, imageSrc.substr(2))]);
-        // const localFile = path.resolve
-        http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/lexique.json'))
+        folder.getFile('assets/lexique.json').readText().then(function (content) {
+            return JSON.parse(content);
+        })
+        // http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/lexique.json'))
             .then(r => {
                 // console.log(r);
                 const keys = Object.keys(r);

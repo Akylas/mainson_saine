@@ -9,7 +9,7 @@
                 <v-template>
                     <GridLayout backgroundColor="white">
                         <GridLayout columns="*,auto" orientation="horizontal" padding="10">
-                            <Label col="0" verticalAlignment="center" :text="item.name" fontSize="18" class="nunito" color="#666"/>
+                            <Label col="0" verticalAlignment="center" :text="item.name" fontSize="18" class="nunito" color="#666" />
                             <Label col="1" v-show="!!item.url" class="mdi" :text="'mdi-chevron-right' | fonticon" fontSize="26" color="gray" />
                         </GridLayout>
                         <Ripple :rippleColor="themeColor" @tap="onNavigationItemTap(item)" />
@@ -43,9 +43,11 @@ export default class Sources extends BaseVueComponent {
     }
     refresh() {
         const folder = fileSystem.knownFolders.currentApp();
-        // photoViewer.showViewer(['file://' + fileSystem.path.join(folder.path, imageSrc.substr(2))]);
-        // const localFile = path.resolve
-        http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/sources.json'))
+
+        folder.getFile('assets/sources.json').readText().then(function (content) {
+            return JSON.parse(content);
+        })
+        // http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/sources.json'))
             .then(r => {
                 this.dataItems = new ObservableArray(r);
             })

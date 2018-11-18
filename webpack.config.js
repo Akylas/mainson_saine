@@ -293,7 +293,7 @@ module.exports = env => {
                 chunk: "vendor",
                 requireModules: ["tns-core-modules/bundle-entry-points"],
                 projectRoot,
-                // targetArchs: ['arm'],
+                targetArchs: ['arm'],
                 webpackConfig: config
             })
         )
