@@ -1,5 +1,5 @@
 <template>
-    <Page ref="page" class="page themedBack" @navigatingTo="onNavigatingTo">
+    <Page ref="page" class="page themedBack" @navigatingTo="onNavigatingTo" @navigatedTo="onNavigatedTo">
         <GridLayout rows="auto,*">
             <GridLayout row="0" rows="50,*" columns="*,50">
                 <AbsoluteLayout rowSpan="2" colSpan="2" :height="headerHeight">
@@ -8,16 +8,16 @@
                     <Image ref="imageView" width="100%" height="100%" src="res://house" />
                     <Image src="res://cloud1" class="cloud2" isUserInteractionEnabled="false" left="-110" top="10" />
                 </AbsoluteLayout>
-                <MDCButton row="0" col="1" top="0" padding="0" left="0" horizontalAlignment="right" :width="actionBarHeight" :height="actionBarHeight" fontSize="26" class="mdi" :text="'mdi-information-outline' | fonticon" color="white" @tap="onTap('help', $event)" variant="text" />
+                <MDCButton row="0" col="1" class="actionBarButton" :text="'mdi-information-outline' | fonticon" @tap="onTap('help', $event)" variant="text" />
             </GridLayout>
             <AbsoluteLayout row="1">
-                <CollectionView top="5" width="100%" height="100%" :items="dataItems" :backgroundColor="backgroundColor">
+                <CollectionView top="10" width="100%" height="100%" rowHeight="60" :items="dataItems" :backgroundColor="backgroundColor">
                     <v-template>
-                        <GridLayout columns="50,*" height="60" width="100%" :backgroundColor="backgroundColor">
+                        <GridLayout columns="50,*" width="100%" :backgroundColor="backgroundColor">
                             <Image col="0" :visibility="!!item.thumbnail ? 'visible' : 'collapsed'" :src="item.thumbnail" stretch="aspectFill" />
                             <Label col="0" :visibility="!!item.icon ? 'visible' : 'hidden'" class="mdi" :color="item.darkColor" fontSize="32" :text="item.icon | fonticon" verticalAlignment="center" horizontalAlignment="center" />
                             <Label col="1" padding="5" verticalAlignment="center" :color="item.darkColor" :text="item.title | uppercase" fontSize="18" class="nunitoblack" />
-                            <CardView backgroundColor="transparent" colSpan="2" :rippleColor="item.darkColor" @tap="onNavigationItemTap(item)" />
+                            <Ripple colSpan="2" :rippleColor="item.darkColor" @tap="onNavigationItemTap(item)" />
                         </GridLayout>
                     </v-template>
                 </CollectionView>
@@ -28,9 +28,11 @@
 </template>
 
 <script lang="ts">
-import BaseVueComponent from './BaseVueComponent'
-import { Component } from 'vue-property-decorator'
+import BaseVueComponent from './BaseVueComponent';
+import { Component, Prop } from 'vue-property-decorator';
 import { isAndroid, screen } from 'platform';
+import { GC } from 'utils/utils';
+import { profile } from 'profiling';
 import { ObservableArray } from 'data/observable-array/observable-array';
 import { RoomData } from '~/data/data';
 import { Image } from 'tns-core-modules/ui/image/image';
@@ -38,11 +40,10 @@ import { CubicBezierAnimationCurve } from 'tns-core-modules/ui/animation/animati
 import { EventData, Page, Color } from 'tns-core-modules/ui/page/page';
 import { getRooms } from '~/services/data.item.service';
 const TColor = require('tinycolor2');
-import { screenWidthDips } from "../variables";
-
+import { screenWidthDips } from '../variables';
 
 interface IRoomData extends RoomData {
-    darkColor?: string
+    darkColor?: string;
 }
 
 @Component({})
@@ -56,20 +57,44 @@ export default class Home extends BaseVueComponent {
         super();
         this.backgroundColor = TColor.mix(TColor(this.themeColor), TColor('#ffffff'), 50).toHexString();
         this.dataItems = new (ObservableArray as any)(
-            getRooms().map((r: IRoomData) => { r.darkColor = this.getTitleColor(r.color).toHexString(); return r; }).concat([
-                {
-                    color: TColor(this.themeColor)
-                        .lighten(10)
-                        .toHexString(),
-                    darkColor: this.getTitleColor(this.themeColor).toHexString(),
-                    title: 'recettes',
-                    icon: 'mdi-food-fork-drink'
-                }
-            ])
+            getRooms()
+                .map((r: IRoomData) => {
+                    r.darkColor = this.getTitleColor(r.color).toHexString();
+                    return r;
+                })
+                .concat([
+                    {
+                        color: TColor(this.themeColor)
+                            .lighten(10)
+                            .toHexString(),
+                        darkColor: this.getTitleColor(this.themeColor).toHexString(),
+                        title: 'recettes',
+                        icon: 'mdi-food-fork-drink'
+                    },
+                    {
+                        color: TColor(this.themeColor)
+                            .lighten(10)
+                            .toHexString(),
+                        darkColor: this.getTitleColor(this.themeColor).toHexString(),
+                        title: 'lexique',
+                        icon: 'mdi-book-open-variant'
+                    },
+                    {
+                        color: TColor(this.themeColor)
+                            .lighten(10)
+                            .toHexString(),
+                        darkColor: this.getTitleColor(this.themeColor).toHexString(),
+                        title: 'sources',
+                        icon: 'mdi-link-variant'
+                    }
+                ])
         );
     }
     mounted() {
         super.mounted();
+    }
+    onNavigatedTo() {
+        GC();
     }
     onNavigatingTo() {
         if (isAndroid) {
@@ -87,8 +112,8 @@ export default class Home extends BaseVueComponent {
     }
     showHideHelp = () => {
         const curve = new CubicBezierAnimationCurve(0.8, 0.0, 0.2, 1.0);
-        const viewIn = (this.helpVisible ? this.imageView : this.imageViewHelp);
-        const viewOut = (this.helpVisible ? this.imageViewHelp : this.imageView);
+        const viewIn = this.helpVisible ? this.imageView : this.imageViewHelp;
+        const viewOut = this.helpVisible ? this.imageViewHelp : this.imageView;
         viewIn.animate({
             scale: { x: 1, y: 1 },
             opacity: 1,
@@ -103,7 +128,7 @@ export default class Home extends BaseVueComponent {
         });
         this.helpVisible = !this.helpVisible;
     };
-    onTap = (command: string, args: EventData) => {
+    onTap(command: string, args: EventData) {
         console.log('onTap', command);
 
         switch (command) {
@@ -111,51 +136,86 @@ export default class Home extends BaseVueComponent {
                 this.showHideHelp();
                 break;
         }
-    };
+    }
 
     getTitleColor(color: string) {
         return TColor(color).darken(30);
     }
 
+    @profile('onNavigationItemTap')
     public onNavigationItemTap(tappedItem) {
+        // alert('test');
         let title = tappedItem.title;
         if (title === 'recettes') {
             import('~/components/RecettesList.vue').then(RecettesList => {
                 this.$navigateTo(RecettesList.default, {
                     animated: true,
                     transitionAndroid: {
-                        name: "fade",
+                        name: 'fade',
                         duration: 200,
-                        curve: "linear"
+                        curve: 'linear'
                     },
                     transitioniOS: {
-                        name: "fade",
+                        name: 'fade',
                         duration: 200,
-                        curve: "linear"
-                    },
+                        curve: 'linear'
+                    }
                 } as any);
-            })
+            });
+        } else  if (title === 'lexique') {
+            import('~/components/Lexique.vue').then(RecettesList => {
+                this.$navigateTo(RecettesList.default, {
+                    animated: true,
+                    transitionAndroid: {
+                        name: 'fade',
+                        duration: 200,
+                        curve: 'linear'
+                    },
+                    transitioniOS: {
+                        name: 'fade',
+                        duration: 200,
+                        curve: 'linear'
+                    }
+                } as any);
+            });
+        } else  if (title === 'sources') {
+            import('~/components/Sources.vue').then(RecettesList => {
+                this.$navigateTo(RecettesList.default, {
+                    animated: true,
+                    transitionAndroid: {
+                        name: 'fade',
+                        duration: 200,
+                        curve: 'linear'
+                    },
+                    transitioniOS: {
+                        name: 'fade',
+                        duration: 200,
+                        curve: 'linear'
+                    }
+                } as any);
+            });
         } else {
             import('~/components/Room.vue').then(Room => {
+                console.log('opening room', tappedItem.title, tappedItem.color, tappedItem.darkColor);
                 this.$navigateTo(Room.default, {
                     animated: true,
                     transitionAndroid: {
-                        name: "fade",
+                        name: 'fade',
                         duration: 200,
-                        curve: "linear"
+                        curve: 'linear'
                     },
                     transitioniOS: {
-                        name: "fade",
+                        name: 'fade',
                         duration: 200,
-                        curve: "linear"
+                        curve: 'linear'
                     },
                     props: {
                         roomId: tappedItem.title,
-                        _darkColor: tappedItem.darkColor,
-                        _themeColor: tappedItem.color
-                    },
+                        darkColor: tappedItem.darkColor + '',
+                        themeColor: tappedItem.color + ''
+                    }
                 } as any);
-            })
+            });
         }
     }
 }

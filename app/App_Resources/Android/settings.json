@@ -1,1 +1,5 @@
-{ "appId": "com.akylas.maisonsaine2", "targetSdkVersion": 28, "minSdkVersion": null }
+{
+    "appId": "com.akylas.maisonsaine",
+    "targetSdkVersion": 28,
+    "minSdkVersion": null
+}

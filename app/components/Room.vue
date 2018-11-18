@@ -1,6 +1,6 @@
 <template>
     <Page ref="page" class="page">
-        <GridLayout backgroundColor="white" :rows="mainRows">
+        <GridLayout :rows="mainRows" iosOverflowSafeArea="false" backgroundColor="white">
             <AbsoluteLayout row=0 rowSpan="2">
                 <GridLayout ref="topView" :rows="'*,50'" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
                     <Image row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
@@ -8,7 +8,7 @@
                         <Label :text="roomData && roomData.title | uppercase" :color="backButtonColor" fontSize="18" class="nunitoblack" verticalAlignment="center" />
                     </StackLayout>
                 </GridLayout>
-                <MDCButton  class="actionBarButton" :text="'mdi-arrow-left' | fonticon" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
+                <MDCButton class="actionBarButton" :text="'mdi-arrow-left' | fonticon" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
             </AbsoluteLayout>
             <CollectionView row="1" rowSpan="2" ref="listView" :top="actionBarHeight" :items="dataItems" :itemTemplateSelector="templateSelector" backgroundColor="transparent" @scroll="onScroll($event)">
                 <v-template name="level">
@@ -22,12 +22,12 @@
                     <StackLayout :height="roomImageHeight" width="100%" />
                 </v-template>
                 <v-template name="section">
-                    <GridLayout rows="10,auto" columns="15,*">
+                    <GridLayout rows="10,auto" columns="15,*" backgroundColor="white">
                         <Label row="1" col="1" :text="item.text" :color="darkColor" fontSize="18" class="nunitobold" borderBottomWidth="2" :borderBottomColor="darkColor" />
                     </GridLayout>
                 </v-template>
                 <v-template name="description">
-                    <GridLayout rows="auto,15" columns="*">
+                    <GridLayout rows="auto,15" columns="*" backgroundColor="white">
                         <HTMLLabel row="0" fontSize="15" class="nunito" padding="5" :html="item.text" />
                     </GridLayout>
                 </v-template>
@@ -42,8 +42,8 @@
 </template>
 
 <script lang="ts">
-import BaseVueComponent from './BaseVueComponent'
-import { Component, Prop } from 'vue-property-decorator'
+import BaseVueComponent from './BaseVueComponent';
+import { Component, Prop } from 'vue-property-decorator';
 import { isAndroid, screen, isIOS } from 'platform';
 import { ObservableArray } from 'data/observable-array/observable-array';
 import { RoomData } from '~/data/data';
@@ -56,12 +56,11 @@ import { CollectionViewItemEventData, CollectionView } from 'nativescript-collec
 import * as fileSystem from 'tns-core-modules/file-system';
 const TColor = require('tinycolor2');
 
-import {darkColor, backgroundColor, roomImageHeight, roomHeaderHeight, actionBarHeight } from "../variables";
+import { darkColor, backgroundColor, roomImageHeight, roomHeaderHeight, actionBarHeight } from '../variables';
 
 const PhotoViewer = require('nativescript-photoviewer');
 
 const photoViewer = new PhotoViewer();
-
 
 @Component({})
 export default class Room extends BaseVueComponent {
@@ -73,18 +72,25 @@ export default class Room extends BaseVueComponent {
     public titleBackgroundColor = '#ffffff';
     public titleDelta = 0;
     public mainRows = `${actionBarHeight},${roomImageHeight},*,${actionBarHeight}`;
-    @Prop({ type: String }) roomId: string
+    @Prop({ type: String }) roomId: string;
+    // @Prop({ type: String }) themeColor;
+    // @Prop({ type: String }) darkColor;
+    // @Prop({ type: String })
+    // _themeColor;
+    // @Prop({ type: String })
+    // _darkColor;
 
     public dataItems: ObservableArray<any>;
     constructor() {
         super();
+        console.log('creating room', this.roomId, this.darkColor, this.themeColor);
         this.roomData = getRoomData(this.roomId);
         this.backButtonColor = this.darkColor;
         const data = this.roomData.data;
-        const dataItems = this.dataItems= new ObservableArray();
+        const dataItems = (this.dataItems = new ObservableArray());
         dataItems.push({
             type: 'header',
-            height:roomImageHeight
+            height: roomImageHeight
         });
         if (data.description) {
             dataItems.push({
@@ -109,8 +115,10 @@ export default class Room extends BaseVueComponent {
             if (s.levels.length > 0) {
                 dataItems.push(this.createLevelItem(s.title, s.levels, 0));
             }
-
         });
+        // dataItems.forEach(d=>{
+        //     console.log(d.type, d.category, d.text);
+        // });
     }
     mounted() {
         super.mounted();
@@ -137,7 +145,7 @@ export default class Room extends BaseVueComponent {
     templateSelector = (item: any, index: number, items: any) => {
         return item.type as string;
     };
-    onScroll(event/*: ListViewScrollEventData*/) {
+    onScroll(event /*: ListViewScrollEventData*/) {
         // If the header content is still visiible
         let offset = event.scrollOffset;
         this.topView.height = Math.max(roomHeaderHeight - offset, actionBarHeight);
@@ -197,18 +205,18 @@ export default class Room extends BaseVueComponent {
         if (isIOS) {
             (this.listView.ios as UICollectionView).performBatchUpdatesCompletion(() => {
                 this.handleSetCurrentLevel(level);
-            }, null)
+            }, null);
         } else {
             this.handleSetCurrentLevel(level);
         }
     }
 
-    onTap = (command: string, args: EventData) => {
+    onTap(command: string, args: EventData) {
         switch (command) {
             case 'back': {
                 this.$navigateBack();
             }
         }
-    };
+    }
 }
 </script>

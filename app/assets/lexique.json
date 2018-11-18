@@ -1,0 +1,733 @@
+{
+    "Bio-contaminants": [
+       {
+          "Agent pathogène": "Moisissures",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation, toxique, infection",
+          "Cible": "bronches +/- nez",
+          "Effet sanitaire": "toux, sifflements, asthme",
+          "Mécanisme d'action": "les moisissures en croissance produisent des COV qui s'associent"
+       },
+       {
+          "Agent pathogène": "Moisissures",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation, toxique, infection",
+          "Cible": "bronches +/- nez",
+          "Effet sanitaire": "rhinite, rhinosinusite"
+       },
+       {
+          "Agent pathogène": "Moisissures",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation, toxique, infection",
+          "Cible": "bronches +/- nez",
+          "Effet sanitaire": "pneumopathie aiguë ou subaiguë"
+       },
+       {
+          "Agent pathogène": "Acariens",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation",
+          "Cible": "ORL",
+          "Effet sanitaire": "rhinite allergique, asthme allergique, conjonctivite",
+          "Mécanisme d'action": "enzymes digestives de certains acariens (dans leurs pelotes fécales) induisent une réaction IgE = réaction allergique"
+       },
+       {
+          "Agent pathogène": "Pollens",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation",
+          "Cible": "ORL",
+          "Effet sanitaire": "rhinite, asthme, conjonctivite",
+          "Mécanisme d'action": "probable interaction entre pollution et pollens (+ de CO2 dans l'air fait produire plus de pollens aux plantes), pollution irritante pour les poumons ce qui augmente la réaction allergique"
+       },
+       {
+          "Agent pathogène": "Animaux domestiques, blattes",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "allergie, irritation",
+          "Cible": "ORL",
+          "Effet sanitaire": "rhinite, asthme, conjonctivite"
+       }
+    ],
+    "Polluants physiques": [
+       {
+          "Agent pathogène": "Particules fines",
+          "Voie de contamination": "aérienne",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "toxique, cancérigène, mutagène",
+          "Cible": "poumons +/- cellules selon PM"
+       },
+       {
+          "Agent pathogène": "Fibres d'amiante",
+          "Voie de contamination": "aérienne",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "cancérigène",
+          "Cible": "poumons, système digestif",
+          "Effet sanitaire": "plaques pleurales, épaississements pleuraux, asbestose, mésothéliome cancers bronchopulmonaires et digestifs"
+       },
+       {
+          "Agent pathogène": "Fibres minérale artificielles (fibres de verre, laine de verre)",
+          "Voie de contamination": "aérienne",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "irritation, cancérigène possible",
+          "Cible": "poumons"
+       }
+    ],
+    "Polluants chimiques": [
+       {
+          "Agent pathogène": "Monoxyde de carbone",
+          "Voie de contamination": "aérienne",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "toxique",
+          "Cible": "poumons puis général",
+          "Effet sanitaire": "peut aller jusqu'au décès"
+       },
+       {
+          "Agent pathogène": "Oxydes d'azote",
+          "Voie de contamination": "aérienne",
+          "Localisation": "Air",
+          "Type d'effet secondaire": "toxique",
+          "Cible": "poumons",
+          "Effet sanitaire": "asthme, facilite les infections pulmonaires"
+       },
+       {
+          "Agent pathogène": "Phtalates (DEHP et DBP sont les plus dangereux)",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "Air, cosmétiques, jouets",
+          "Type d'effet secondaire": "perturbateur endocrinien, cancérigène possible",
+          "Cible": "appareil reproducteur, fœtus, foie",
+          "Effet sanitaire": "baisse de la fertilité, atrophie testiculaire, diminution du poids du fœtus, malformations, MFIU, féminisation des fœtus mâles, puberté précoce, cancer du sein et des testicules, obésité, perturbation des hormones hépatiques",
+          "Mécanisme d'action": "molécule exogène de synthèse ou naturelle dont la structure est proche d'une hormone. Interfère avec le système hormonal en imitant l'action d'une hormone parfois à un moment innapproprié ou en bloquant ou diminuant l'action d'une hormone par example en prenant sa place sur son récepteur dédié. Effet transgénérationnel : peut se transmettre à la descendance."
+       },
+       {
+          "Agent pathogène": "Composés organiques volatiles = COV",
+          "Voie de contamination": "aérienne",
+          "Localisation": "air, bricolage",
+          "Type d'effet secondaire": "toxique, cancérigène, mutagène",
+          "Cible": "poumons",
+          "Effet sanitaire": "asthme, cancer"
+       },
+       {
+          "Agent pathogène": "Benzophenone 1 et 3",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie, perturbateur endocrinien",
+          "Cible": "Appareil reproducteur, système immunitaire",
+          "Effet sanitaire": "suspicion de défaut d'ossification chez le fœtus"
+       },
+       {
+          "Agent pathogène": "BHA, BHT (E320 E321)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, irritation, toxique, perturbateur endocrinien, cancérigène possible",
+          "Cible": "Appareil reproducteur, système immunitaire, système nerveux, poumons, peau, foie, reins, intestins",
+          "Effet sanitaire": "urticaire, bronchospasme, augmentation cholestérol, troubles comportementaux, immunotoxique, reprotoxique"
+       },
+       {
+          "Agent pathogène": "Butylparaben, potassium butylparaben, sodium butylparaben (E214 à 219)",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "toxique,perturbateur endocrinien, cancérigène",
+          "Cible": "Appareil reproducteur, système immunitaire, système nerveux",
+          "Effet sanitaire": "immunotoxique, neurotoxique"
+       },
+       {
+          "Agent pathogène": "Propylparaben, potassium propylparaben, sodium propylparaben (E214 à 219)",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "toxique,perturbateur endocrinien, cancérigène",
+          "Cible": "Appareil reproducteur, système immunitaire, système nerveux",
+          "Effet sanitaire": "immunotoxique, neurotoxique"
+       },
+       {
+          "Agent pathogène": "Silicones : cyclopentasiloxane, cyclotetrasiloxane, cyclomethicone, dimethicone (E900)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien",
+          "Cible": "Appareil reproducteur"
+       },
+       {
+          "Agent pathogène": "Ethylhexyl methoxycinnamate",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "perturbateur endocrinien",
+          "Cible": "appareil reproducteur, thyroïde"
+       },
+       {
+          "Agent pathogène": "Triclosan triclocarban",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, jouets, textiles, bricolage",
+          "Type d'effet secondaire": "allergie, perturbateur endocrinien, cancérigène possible, résistance bactérienne",
+          "Cible": "appareil reproducteur, thyroïde, système immunitaire, intestin, cerveau",
+          "Effet sanitaire": "altération du microbiote intestinal, inflammatoire, abortif, affecte le developpement cérébral du fœtus et le neurodéveloppement de l'enfant, immunotoxique, suspecté de favoriser cancer du sein/prostate/colon, dégradation en dioxine, chlorophénol et méthyltriclosan toxiques eux aussi"
+       },
+       {
+          "Agent pathogène": "Alkyphénols et ethoxylates d'alkyphénols (nonylphénol, nonoxynol, octylphénol)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, textiles, produits ménagers, bricolage",
+          "Type d'effet secondaire": "toxique, irritation, perturbateur endocrinien, cancérigène possible",
+          "Cible": "appareil reproducteur, thyroïde, fœtus",
+          "Effet sanitaire": "altération de la fertilité du sperme et de l'ADN, suspecté de favoriser le cancer du sein et de l'ovaire"
+       },
+       {
+          "Agent pathogène": "Alpha-isomethyl ionone",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Amylcinnamal",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Amylcinnamyl alcohol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Anise alcohol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Benzyl alcohol",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, textiles, bricolage",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Benzyl cinnamate",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Benzyl sallicylate",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Butylphenyl methylpropional",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Cinnamate",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Cinnamyl alcohol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Citral",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Citronnelol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Coumarin",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, bricolage",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "foie, rein",
+          "Effet sanitaire": "toxicité hépatique et rénale"
+       },
+       {
+          "Agent pathogène": "Eugenol",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "foie",
+          "Effet sanitaire": "toxicité hépatique"
+       },
+       {
+          "Agent pathogène": "Evernia furfuracea extract",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Evernia prunastril extract",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Farnesol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Geraniol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Hexylcinnamal",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Hydroxycitronellal",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Hydroxyisohexyl 3 cyclohexene carboxaldehyde",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques, produits ménagers",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Isoeugenol",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Limonene",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, produits ménagers",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Linalool",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, produits ménagers",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Methyl 2 octynoate",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie"
+       },
+       {
+          "Agent pathogène": "Isothiazolinones : méthylisothiazolinone, méthylchloroisothiazolinone, octylisothiazolinone, benzisothiazolinone",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, bricolage",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "peau, cerveau",
+          "Effet sanitaire": "eczéma, dermatite allergique, pemphigoïde bulleuse, neutoxique",
+          "Mécanisme d'action": "allergénique, cytotoxique"
+       },
+       {
+          "Agent pathogène": "Anmonium lauryl sulfate (E487)",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, alimentaire, textiles, bricolage",
+          "Type d'effet secondaire": "irritation",
+          "Cible": "peau, yeux, système respiratoire, système digestif",
+          "Effet sanitaire": "érythème, œdème, dermite, conjonctivite, dommages de la cornée, toux, difficultés respiratoires, congestion nasale, maux de tête"
+       },
+       {
+          "Agent pathogène": "Phenoxyethanol",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, textiles, produits ménagers, bricolage",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien",
+          "Cible": "peau, yeux, système nerveux central, foie, sang",
+          "Effet sanitaire": "eczéma, urticaire, irritation oculaire, troubles neurologiques, altération des cellules sanguines"
+       },
+       {
+          "Agent pathogène": "Para-phenylenediamine ou PDD",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, textiles",
+          "Type d'effet secondaire": "allergie",
+          "Cible": "peau, yeux"
+       },
+       {
+          "Agent pathogène": "Sodium lauryl sulfate et sodium laureth sulfate (E487)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "irritation",
+          "Cible": "peau, yeux",
+          "Mécanisme d'action": "retire le film lipidique de la peau"
+       },
+       {
+          "Agent pathogène": "Salicylate de méthyl",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "toxique",
+          "Cible": "estomac, sang",
+          "Effet sanitaire": "gastralagies, hémorragies,peut aller jusqu'au décès si surdosage"
+       },
+       {
+          "Agent pathogène": "Teintures dérivées des goudrons de houille",
+          "Voie de contamination": "cutanée",
+          "Localisation": "cosmétiques",
+          "Type d'effet secondaire": "allergie, cancérigène",
+          "Cible": "peau"
+       },
+       {
+          "Agent pathogène": "Amines aromatiques",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, textiles",
+          "Type d'effet secondaire": "allergie, irritation, toxique",
+          "Cible": "sang, foie, rein, cœur, peau, yeux, vessie",
+          "Effet sanitaire": "anémie, méthémoglobinémie, hépatite, insuffisance rénale, cardiomyopathie, irritation oculaire, cancer de la vessie"
+       },
+       {
+          "Agent pathogène": "Formaldéhyde, formol (COV)",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, jouets, produits ménagers, bricolage",
+          "Type d'effet secondaire": "allergie, irritation, cancérigène",
+          "Cible": "peau, yeux, voies respiratoires, nasopharynx, sang, cerveau",
+          "Effet sanitaire": "irritation occulaire, eczéma, dermatite, irritation des voies respiratoires, difficultés respiratoires,, bronchospasme, asthme, rhinite, cancers du nasopharynx, leucémie, probable neurotoxicité, maux de tête, fatigue, troubles du sommeil, ulcération digestive si ingestion"
+       },
+       {
+          "Agent pathogène": "Polyacrylate de sodium",
+          "Voie de contamination": "aérienne, cutanée",
+          "Localisation": "cosmétiques, hygiène",
+          "Type d'effet secondaire": "allergie, irritation,",
+          "Cible": "peau, voies respiratoires",
+          "Effet sanitaire": "dermatite, rhino-conjonctivite, asthme"
+       },
+       {
+          "Agent pathogène": "Pesticides (Glyphosate, Atrazine, Simazine, Chlortroluron, Diuron, Isoproturon, Malathion, Cardbaxyl, Deltamethrine, Endosulfan, Carbamates,..)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "hygiène, alimentation",
+          "Type d'effet secondaire": "toxique, cancérigène, perturbateur endocrinien",
+          "Cible": "appareil reproducteur, fœtus, système immunitaire, système nerveux",
+          "Effet sanitaire": "cancer des testicules et de la prostate, puberté précoce, toxique pour le fœtus en développement, immunotoxique, troubles neurologique, maladie de parkinson"
+       },
+       {
+          "Agent pathogène": "Dioxine",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "hygiène, alimentation",
+          "Type d'effet secondaire": "toxique, cancérigène, perturbateur endocrinien",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "dysfonctionnement ovarien, baisse de la fertilité, incapacité à mener une grossesse à terme, endométriose, perturbations horomnales cancer",
+          "Mécanisme d'action": "Issue de réaction entre le chlore utilisé pour blanchir le coton et la cellulose des produits d'hygiène féminins et infantiles ou de combustion incomplète lors de la cuisson des aliments"
+       },
+       {
+          "Agent pathogène": "Hydrocarbures aromatiques polycycliques (HAP)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "air, hygiène, alimentation",
+          "Type d'effet secondaire": "toxique, cancérigène, mutagène",
+          "Cible": "appareil reproducteur, système immunitaire, voie urinaires, poumon, peau, foie, artères",
+          "Effet sanitaire": "génotoxique, immunotoxique, cancers des voies urinaires, cancers broncho-pulmonaires et carcinome de la peau, dégénérescence des artères",
+          "Mécanisme d'action": "Issus de la cuisson au barbecue notamment, de la contamination des sols et des animaux, des moteurs diesel et du chauffage au bois"
+       },
+       {
+          "Agent pathogène": "Aluminium (E173)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxicité",
+          "Cible": "système nerveux central",
+          "Effet sanitaire": "myofasciite à macrophages, encéphalopathie, epilepsie, troubles de la mémoire, anémie, psoriasis, ostéomalacie, intolérance au glucose, insuffisance hépato-rénale, arrêt cardiaque, maladie d'alzeihmer",
+          "Mécanisme d'action": " "
+       },
+       {
+          "Agent pathogène": "Sulfates d'aluminium (E520 à 523)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxicité",
+          "Mécanisme d'action": "toxicité pour les cellules épithéliales mamaires"
+       },
+       {
+          "Agent pathogène": "Retardateurs de flamme bromés",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "jouets, textiles, bricolage, alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien, cancérigène",
+          "Cible": "appareil reproducteur, thyroïde, fœtus, foie, rein, système nerveux central",
+          "Effet sanitaire": "altération des taux d'hormones sexuelles, baisse de la concentration et mobilité des spermatozoïdes, suspecté de provoquer des tumeurs hépatiques, atteinte du développement cérébral du fœtus, troubles cognitifs chez l'enfant",
+          "Mécanisme d'action": "bioaccumulables dans les graisses tout au long de la chaîne alimentaire"
+       },
+       {
+          "Agent pathogène": "Bisphénols A, F, S",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien, cancérigène",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "Baisse de la qualité du sperme, puberté précoce, cancers du sein et de la prostate, maladies cardiovasculaires, obésité, troubles du comportement"
+       },
+       {
+          "Agent pathogène": "Acide perfluoro-octonoïque (PFOA et PFOS)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien, toxique, cancérigène",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "Cancer de la prostate, troubles du comportement"
+       },
+       {
+          "Agent pathogène": "Nitrates",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "cancérigène",
+          "Mécanisme d'action": "Cancérigène après transformation en nitrosamines dans le corps"
+       },
+       {
+          "Agent pathogène": "Phosphates (E541)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "toxique",
+          "Cible": "rein, appareil digestif",
+          "Effet sanitaire": "Toxicité rénale, troubles digestifs, troubles du comportement",
+          "Mécanisme d'action": "hyperactivité chez l'enfant"
+       },
+       {
+          "Agent pathogène": "OGM",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Mécanisme d'action": "Le mécanisme d'action dépend des nouvelles protéines produites, risque de résistance aux bactéries, risque de diminution de la valeur nutritive, risque d'allergie"
+       },
+       {
+          "Agent pathogène": "Microplastiques et nanoplastiques",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "toxique",
+          "Mécanisme d'action": "La toxicité dépend de la taille et de la nature du plastique"
+       },
+       {
+          "Agent pathogène": "Nanoparticules (dioxide de titane, aluminium, silicate de magnésium,...)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "toxique, cancérigène",
+          "Cible": "appareil reproducteur, fœtus, poumons, système nerveux"
+       },
+       {
+          "Agent pathogène": "Métaux lourds (Nickel, Mercure, Arsenic, Plomb, Cadmium,...)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "appareil reproducteur, système nerveux, cœur",
+          "Effet sanitaire": "reprotoxique, neurotoxique, cardiopathies"
+       },
+       {
+          "Agent pathogène": "Antibiotiques",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "infection résistante",
+          "Mécanisme d'action": "Risque de créer des résistances aux bactéries"
+       },
+       {
+          "Agent pathogène": "Bactéries",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "infection",
+          "Effet sanitaire": "Infections"
+       },
+       {
+          "Agent pathogène": "Hormones",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien",
+          "Cible": "Appareil reproducteur, glandes",
+          "Effet sanitaire": "perturbations hormonales",
+          "Mécanisme d'action": "Perturbation du système hormonal endogène par l'apport d'hormones exogènes"
+       },
+       {
+          "Agent pathogène": "Phyto-oestrogènes",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "perturbateur endocrinien",
+          "Cible": "Appareil reproducteur, glandes",
+          "Effet sanitaire": "perturbations hormonales, récidives de cancers du sein",
+          "Mécanisme d'action": "Imitent les oestrogènes"
+       },
+       {
+          "Agent pathogène": "Gallates (E310 à 312)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien, cancérigène possible",
+          "Cible": "appareil reproducteur, sang, système nerveux, central, peau, estomac, poumon",
+          "Effet sanitaire": "troubles sanguins, méthémoglobinémie, troubles comportementaux et hyperactivité chez l'enfant, asthme, eczéma, urticaire, irritation de la peau et de l'estomac"
+       },
+       {
+          "Agent pathogène": "Citrate de tri-amonium (E380)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "foie, rein, pancréas, tube digestif, peau, yeux, voies respiratoires",
+          "Effet sanitaire": "troubles des fonctions, hépatiques, rénales, pancréatiques et digestives, irritation de la peau, des yeux et des voies respiratoires"
+       },
+       {
+          "Agent pathogène": "EDTA (E385)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation, produits ménagers",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "yeux, peau, poumon, rein",
+          "Effet sanitaire": "irritation des yeux, conjonctivites allergiques, eczéma, bronchoconstriction, troubles digestifs à fortes doses, reprotoxique, fœtotoxique"
+       },
+       {
+          "Agent pathogène": "Chlorures (E512) et chlorure d'ammonium (E510)",
+          "Voie de contamination": "orale",
+          "Localisation": "cosmétiques,alimentation, bricolage",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "système nerveux central, tube digestif",
+          "Effet sanitaire": "à fortes doses : maux de tête, somnolence, confusion, nausées et vomissements, irritation bouche et estomac"
+       },
+       {
+          "Agent pathogène": "Silicates (E552 à 556) (talc, amiante, silicate de sodium, silicate de magnésium,...)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques,alimentation, bricolage",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène probable",
+          "Cible": "rein, estomac, peau, yeux, voies respiratoires",
+          "Effet sanitaire": "irritation peau, yeux et voies respiratoires ; suspecté de favoriser les calculs rénaux et de toxicité rénale ; suspecté de favoriser le cancer de l'estomac"
+       },
+       {
+          "Agent pathogène": "Benzoates (E210 à 213) (benzyl benzoate, acide benzoïque, benzoate de sodium,...)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène",
+          "Cible": "poumon, peau, système nerveux",
+          "Effet sanitaire": "asthme, urticaire, neurotoxique, hyperactivité chez l'enfant"
+       },
+       {
+          "Agent pathogène": "Sulfites (E220 à 228)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "peau, voies respiratoires, système digestif, système nerveux central",
+          "Effet sanitaire": "urticaire, photosensibilisation, rhinorrhée, bronchospasme, douleurs abdominales, crise hémorroïdaire, perturbation du microbiote intestinal, céphalées, décès si surdosage"
+       },
+       {
+          "Agent pathogène": "Polysorbates (E431 à 436)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien, cancérigène",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "reprotoxique, foetotoxique"
+       },
+       {
+          "Agent pathogène": "Phosphatides d'ammonium (E432 et 477)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "toxique",
+          "Cible": "système nerveux central, rein, os, tube digestif",
+          "Effet sanitaire": "hyperactivité chez l'enfant, toxicité rénale, ostéoporose, augmentation de l'activité gastrique, toxique pour l'estomac et les intestins"
+       },
+       {
+          "Agent pathogène": "Huile de soja oxydée (E479a et b)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien ?",
+          "Cible": "artères, foie",
+          "Effet sanitaire": "oedeme de quincke rare, athérosclérose, cancer, désordres hépathiques"
+       },
+       {
+          "Agent pathogène": "Stéréates (E491 à 495) (E470b et 572)",
+          "Voie de contamination": "cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "système immunitaire, tube digestif",
+          "Effet sanitaire": "immunotoxique, diminution de l'absorption intestinale des nutriments"
+       },
+       {
+          "Agent pathogène": "Glutamates (E620 à 625)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien, cancérigène possible",
+          "Cible": "système nerveux central et nombreux organes dont le rein",
+          "Effet sanitaire": "neurotoxique à fortes doses ; rôle probable dans les maladies de Alzeihmer, Parkinson, Huntington, sclérose en plaques et sclérose latérale amyotrophique ; obésité ; crises d'asthme ; suspecté de dommages rénaux ; syndrome du restaurant chinois : maux de tête, flush facial, nausées, perte de sensation de la nuque, sensation de brûlure, courbatures, douleurs cardiovasculaires",
+          "Mécanisme d'action": "dérégulation hormonale de la faim conduit à l'obésité, accélère le développement des cancers"
+       },
+       {
+          "Agent pathogène": "Aspartam (E951) et sels d'aspartam (E962)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "peau, tube digestif, système nerveux central",
+          "Effet sanitaire": "dermatite allergique, inflammation intestinale qui pourrait favoriser obésité et diabète, suspecté de provoquer des accouchements prématurés, désordres neuro-dégénératifs, suspecté de favoriser la dépression"
+       },
+       {
+          "Agent pathogène": "Cyclamates (E952)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique, perturbateur endocrinien, cancérigène possible",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "possible atteinte testicules",
+          "Mécanisme d'action": "favoriserait le dévelopement des cancers"
+       },
+       {
+          "Agent pathogène": "Saccharine (E954)",
+          "Voie de contamination": "orale",
+          "Localisation": "alimentation",
+          "Type d'effet secondaire": "allergie, toxique, cancérigène possible",
+          "Cible": "peau, tube digestif, vessie, rein, cœur",
+          "Effet sanitaire": "allergie avec prurit, rash, urticaire ; cancer de la vessie ; altération du microbiote intestinal ce qui favorise le diabète de type2 ; si fortes doses : nausées, vomissements, anorexie, diarrhée, acidité gastrique, spasmes musculaires, hallucinations, tachycardie, néphrite"
+       },
+       {
+          "Agent pathogène": "Propylène glycol (E1520)",
+          "Voie de contamination": "aérienne, cutanée, orale",
+          "Localisation": "cosmétiques, alimentation",
+          "Type d'effet secondaire": "allergie, toxique",
+          "Cible": "peau, yeux, voies respiratoires, système nerveux central, rein",
+          "Effet sanitaire": "irritation cutanée avec œdème et érythème, eczéma, irritation oculaire, irritation voies respiratoires, à fortes doses : sédatif, toxicité rénale, neurotoxique, insuffisance hépatique"
+       }
+    ],
+    "Ondes": [
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Effet sanitaire": "syndrome des micro-ondes = maux de tête, nausées, perte d'appétit, dépression, irritabilité, troubles du sommeil, vertiges et chutes, troubles sensoriels, difficultés de concentration, altération de la peau (eczema, psoriasis, purpura), troubles de l'EEG.",
+          "Mécanisme d'action": "perte d'étanchéité de la barrière hémato-encéphalique, déstabilisation des régulations membranaires, perturbation de la production de mélatonine et d'acétylcholine, dommages génétiques"
+       },
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Cible": "appareils des sens",
+          "Effet sanitaire": "atteintes sensitives (auditives, optiques, olfactives)"
+       },
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Cible": "cerveau, sang, thyroïde, pancréas",
+          "Effet sanitaire": "cancers : neurinôme acoustique, cancer du tronc cérébral, leucémie, lymphome, cancer de la thyroïde, cancer du pancréas"
+       },
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Cible": "système immunitaire",
+          "Effet sanitaire": "Maladies auto-immunes"
+       },
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Cible": "cerveau, sang, thyroïde, pancréas",
+          "Effet sanitaire": "Épilepsie"
+       },
+       {
+          "Agent pathogène": "Ondes wifi, bluetooth, téléphone mobile, téléphone sans fil",
+          "Voie de contamination": "aérienne",
+          "Localisation": "ondes électromagnétiques",
+          "Type d'effet secondaire": "toxique, cancérigène possible",
+          "Cible": "Appareil reproducteur",
+          "Effet sanitaire": "Interruptions de grossesse et malformations fœtales"
+       }
+    ]
+ }
