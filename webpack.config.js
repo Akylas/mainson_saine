@@ -9,16 +9,32 @@ const TerserPlugin = require("terser-webpack-plugin")
 const VueLoaderPlugin = require("vue-loader/lib/plugin")
 
 const NsVueTemplateCompiler = require("nativescript-vue-template-compiler")
-NsVueTemplateCompiler.registerElement(
-    "MDCTextField",
-    () => require("~/nativescript-material-components/textfield").TextField,
-    {
-        model: {
-            prop: "text",
-            event: "textChange"
-        }
-    }
-)
+// NsVueTemplateCompiler.registerElement(
+//   'FormattedString',
+//   () => require('tns-core-modules/text/formatted-string').FormattedString
+// )
+// NsVueTemplateCompiler.registerElement('Span', () => require('tns-core-modules/text/span').Span)
+// NsVueTemplateCompiler.registerElement(
+//     "MDCTextField",
+//     () => require("~/nativescript-material-components/textfield").TextField,
+//     {
+//         model: {
+//             prop: "text",
+//             event: "textChange"
+//         }
+//     }
+// )
+// NsVueTemplateCompiler.registerElement(
+//     "TabView",
+//     () => require("~/tns-core-modules/ui/tab-view").TabView,
+//     {
+//         model: {
+//             prop: "selectedIndex",
+//             event: "selectedIndexChange"
+//         }
+//     }
+// )
+
 const nsWebpack = require("nativescript-dev-webpack")
 const nativescriptTarget = require("nativescript-dev-webpack/nativescript-target")
 const {
@@ -39,6 +55,8 @@ module.exports = env => {
 
     const platforms = ["ios", "android"]
     const projectRoot = __dirname
+
+    const tsconfig = platform === "android" ? 'tsconfig.android.json' : 'tsconfig.json'
 
     // Default destination inside platforms/<platform>/...
     const dist = resolve(
@@ -63,18 +81,18 @@ module.exports = env => {
         hmr // --env.hmr
     } = env
 
-    console.log(!!undefined)
     const mode = production ? "production" : "development"
 
     const appFullPath = resolve(projectRoot, appPath)
     const appResourcesFullPath = resolve(projectRoot, appResourcesPath)
 
     const entryModule = nsWebpack.getEntryModule(appFullPath)
-    const entryPath = `.${sep}${entryModule}.ts`
+    const entryPath = `.${sep}${entryModule}`
 
     const config = {
         mode: mode,
         context: appFullPath,
+        // stats:'verbose',
         watch: !!hmr,
         watchOptions: !!hmr
             ? {
@@ -109,8 +127,8 @@ module.exports = env => {
                 "~": appFullPath,
                 vue: "nativescript-vue"
             },
-            // don't resolve symlinks to symlinked modules
-            symlinks: false
+            // resolve symlinks to symlinked modules
+            symlinks: true,
         },
         resolveLoader: {
             // don't resolve symlinks to symlinked loaders
@@ -193,7 +211,7 @@ module.exports = env => {
                         "nativescript-dev-webpack/apply-css-loader.js",
                         {
                             loader: "css-loader",
-                            options: { minimize: false, url: false }
+                            options: { url: false }
                         }
                     ]
                 },
@@ -204,7 +222,7 @@ module.exports = env => {
                         "nativescript-dev-webpack/apply-css-loader.js",
                         {
                             loader: "css-loader",
-                            options: { minimize: false, url: false }
+                            options: { url: false }
                         },
                         "sass-loader"
                     ]
@@ -214,8 +232,9 @@ module.exports = env => {
                     exclude: /node_modules/,
                     loader: "ts-loader",
                     options: {
+                        configFile: resolve(tsconfig),
                         appendTsSuffixTo: [/\.vue$/],
-                        appendTsxSuffixTo: [/\.vue$/]
+                        allowTsInNodeModules: true // wanted?
                     }
                 },
                 {

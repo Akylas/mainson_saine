@@ -44,12 +44,6 @@ android {
     }
   }
 }
-def supportVersion =  project.ext.supportVersion
-
-dependencies {
-    compile "com.android.support:appcompat-v7:$supportVersion"
-    compile "com.android.support:design:$supportVersion"
-}
 
 def settingsGradlePath
 

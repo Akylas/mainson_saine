@@ -10,9 +10,9 @@ export default class BaseVueComponent extends Vue {
     public isIOS = isIOS;
     // themeColor = primaryColor;
     // darkColor = darkColor;
-    @Prop({ type: String, required: true, default: primaryColor })
+    @Prop({ type: String, default: primaryColor })
     themeColor;
-    @Prop({ type: String, required: true, default: darkColor })
+    @Prop({ type: String, default: darkColor })
     darkColor;
     public actionBarHeight = actionBarHeight;
     get page() {

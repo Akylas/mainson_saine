@@ -1,12 +1,12 @@
 <template>
     <Page ref="page" class="page themedBack" @navigatingTo="onNavigatingTo" @navigatedTo="onNavigatedTo">
-        <GridLayout rows="auto,*">
+        <GridLayout rows="auto,*" iosOverflowSafeArea="false">
             <GridLayout row="0" rows="50,*" columns="*,50">
-                <AbsoluteLayout rowSpan="2" colSpan="2" :height="headerHeight">
-                    <Image src="res://clouds" class="cloud1" isUserInteractionEnabled="false" left="-260" top="20" />
-                    <Image ref="imageViewHelp" width="100%" height="100%" src="res://house_help" opacity="0" style="transform:scale(0.2,0.2);" />
-                    <Image ref="imageView" width="100%" height="100%" src="res://house" />
-                    <Image src="res://cloud1" class="cloud2" isUserInteractionEnabled="false" left="-110" top="10" />
+                <AbsoluteLayout rowSpan="2" colSpan="2" :height="headerHeight" >
+                    <AImage src="res://clouds" class="cloud1" isUserInteractionEnabled="false" left="-260" top="20" />
+                    <AImage ref="imageViewHelp" width="100%" height="100%" src="res://house_help" opacity="0" style="transform:scale(0.2,0.2);" stretch="fitCenter" />
+                    <AImage ref="imageView" width="100%" height="100%" src="res://house" stretch="fitCenter" fadeDuration="200"/>
+                    <AImage src="res://cloud1" class="cloud2" isUserInteractionEnabled="false" left="-110" top="10" />
                 </AbsoluteLayout>
                 <MDCButton row="0" col="1" class="actionBarButton" :text="'mdi-information-outline' | fonticon" @tap="onTap('help', $event)" variant="text" />
             </GridLayout>
@@ -14,7 +14,7 @@
                 <CollectionView top="10" width="100%" height="100%" rowHeight="60" :items="dataItems" :backgroundColor="backgroundColor">
                     <v-template>
                         <GridLayout columns="50,*" width="100%" :backgroundColor="backgroundColor">
-                            <Image col="0" :visibility="!!item.thumbnail ? 'visible' : 'collapsed'" :src="item.thumbnail" stretch="aspectFill" />
+                            <AImage col="0" :visibility="!!item.thumbnail ? 'visible' : 'collapsed'" :src="item.thumbnail" stretch="aspectFill" />
                             <Label col="0" :visibility="!!item.icon ? 'visible' : 'hidden'" class="mdi" :color="item.darkColor" fontSize="32" :text="item.icon | fonticon" verticalAlignment="center" horizontalAlignment="center" />
                             <Label col="1" padding="5" verticalAlignment="center" :color="item.darkColor" :text="item.title | uppercase" fontSize="18" class="nunitoblack" />
                             <Ripple colSpan="2" :rippleColor="item.darkColor" @tap="onNavigationItemTap(item)" />

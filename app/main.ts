@@ -1,5 +1,22 @@
-// require('./ts_helpers');
+// const dev = TNS_ENV === 'development';
+const dev = false;
 import Vue, { registerElement } from 'nativescript-vue';
+
+import * as trace from 'tns-core-modules/trace';
+const errorHandler: trace.ErrorHandler = {
+    handlerError(err) {
+        // (development 1)
+        throw err;
+
+        // (development 2)
+        // trace.write(err, "unhandlede-error", type.error);
+
+        // (production)
+        // reportToAnalytics(err)
+    }
+};
+
+trace.setErrorHandler(errorHandler);
 
 // naming main file app is important for snapshot
 import './app.scss';
@@ -7,35 +24,34 @@ import { isAndroid, isIOS } from 'platform';
 // import { addCategories, categories, enable } from 'trace';
 // addCategories(categories.NativeLifecycle);
 // addCategories(categories.ViewHierarchy);
+// addCategories(categories.Layout);
 // enable();
 
-// if (TNS_ENV !== "production") {
-//   import("nativescript-vue-devtools").then(VueDevtools => Vue.use(VueDevtools));
-// }
-
-// Prints Vue logs when --env.production is *NOT* set while building
-// Vue.config.silent = (TNS_ENV === 'production')
-// Vue.config['debug'] = true
-// Vue.config.silent = false
-Vue.config.silent = true;
+Vue.config.silent = !dev;
+Vue.config['debug'] = dev;
 
 import { fonticon, TNSFontIcon } from 'nativescript-fonticon';
-
-import { Label as HTMLLabel } from 'nativescript-htmllabel/label';
-import { Button as MDCButton } from 'nativescript-material-components/button';
-import { CardView } from 'nativescript-material-components/cardview';
-import { Ripple } from 'nativescript-material-components/ripple';
 
 import CollectionView from 'nativescript-collectionview/vue';
 Vue.use(CollectionView);
 import RadListViewPlugin from 'nativescript-ui-listview/vue';
 Vue.use(RadListViewPlugin);
 
+registerElement('MDCButton', () => require('nativescript-material-button').Button);
+// registerElement('FloatingActionButton', () => require('nativescript-material-components/floatingactionbutton').FloatingActionButton);
+// registerElement('MDCActivityIndicator', () => require('nativescript-material-components/activityindicator').ActivityIndicator);
+registerElement('CardView', () => require('nativescript-material-cardview').CardView);
+registerElement('Ripple', () => require('nativescript-material-ripple').Ripple);
+registerElement('HTMLLabel', () => require('nativescript-htmllabel').Label);
+
+import * as app from 'tns-core-modules/application';
+import * as imageModule from 'nativescript-image';
+registerElement('AImage', () => imageModule.Img);
+
+app.on(app.launchEvent, () => imageModule.initialize({ isDownsampleEnabled: true }), imageModule.getImagePipeline().clearCaches());
+app.on(app.exitEvent, args => imageModule.shutDown());
+
 import Home from './components/Home.vue';
-registerElement('MDCButton', () => MDCButton);
-registerElement('HTMLLabel', () => HTMLLabel);
-registerElement('CardView', () => CardView);
-registerElement('Ripple', () => Ripple);
 
 // Prints all icon classes loaded
 // TNSFontIcon.debug = true;
@@ -53,6 +69,22 @@ Vue.filter('uppercase', function(value) {
 
 Vue.prototype.$isAndroid = isAndroid;
 Vue.prototype.$isIOS = isIOS;
+
+Vue.prototype.$showError = function(err: Error) {
+    console.log('showError', err, err.toString(), err['stack']);
+    const message = typeof err === 'string' ? err : err.toString();
+    return alert({
+        title: Vue.prototype.$ltc('error'),
+        okButtonText: Vue.prototype.$ltc('ok'),
+        message
+    });
+};
+Vue.prototype.$alert = function(message) {
+    return alert({
+        okButtonText: Vue.prototype.$ltc('ok'),
+        message
+    });
+};
 
 new Vue({
     render: h => {

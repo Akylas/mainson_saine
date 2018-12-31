@@ -3,7 +3,7 @@
         <StackLayout backgroundColor="white" iosOverflowSafeArea="false">
             <AbsoluteLayout>
                 <GridLayout :rows="'*,auto'" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
-                    <Image row="0" :src="recetteData.image" stretch="aspectFill" />
+                    <AImage row="0" :src="recetteData.image" stretch="aspectFill" />
                     <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta*actionBarHeight + 15">
                         <HTMLLabel class="nunito" padding="5" fontSize="20" :html="recetteData.title" :color="backButtonColor" verticalAlignment="center" />
                     </StackLayout>

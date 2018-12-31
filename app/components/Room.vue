@@ -2,20 +2,20 @@
     <Page ref="page" class="page">
         <GridLayout :rows="mainRows" iosOverflowSafeArea="false" backgroundColor="white">
             <AbsoluteLayout row=0 rowSpan="2">
-                <GridLayout ref="topView" :rows="'*,50'" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
-                    <Image row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
+                <GridLayout ref="topView" rows="*,51" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
+                    <AImage row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
                     <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta*actionBarHeight + 15">
                         <Label :text="roomData && roomData.title | uppercase" :color="backButtonColor" fontSize="18" class="nunitoblack" verticalAlignment="center" />
                     </StackLayout>
                 </GridLayout>
                 <MDCButton class="actionBarButton" :text="'mdi-arrow-left' | fonticon" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
             </AbsoluteLayout>
-            <CollectionView row="1" rowSpan="2" ref="listView" :top="actionBarHeight" :items="dataItems" :itemTemplateSelector="templateSelector" backgroundColor="transparent" @scroll="onScroll($event)">
+            <CollectionView row="1" rowSpan="2" ref="listView" :items="dataItems" :itemTemplateSelector="templateSelector" backgroundColor="transparent" @scroll="onScroll($event)">
                 <v-template name="level">
                     <GridLayout rows="10,20,auto,auto" columns="20,20,*" backgroundColor="white">
                         <Label col="1" row="1" class="mdi" :text="'mdi-numeric-' + item.level + '-box' | fonticon" :color="darkColor" verticalAlignment="top" />
                         <HTMLLabel fontSize="15" class="nunito" paddingTop="5" rowSpan="3" col="2" :html="item.text" verticalAlignment="top" />
-                        <Image row="3" col="2" :visibility="!!item.image ? 'visible' : 'collapsed'" :src="item.image" @tap="onImageTap($event, item.image)" />
+                        <AImage row="3" col="2" :visibility="!!item.image ? 'visible' : 'collapsed'" :src="item.image" :aspectRatio="item.imageRatio" @tap="onImageTap($event, item.image)" />
                     </GridLayout>
                 </v-template>
                 <v-template name="header">
@@ -32,10 +32,10 @@
                     </GridLayout>
                 </v-template>
             </CollectionView>
-            <GridLayout row="3" columns="20,*,*,*,20" :backgroundColor="darkColor">
-                <StackLayout v-for="(item, i) in ['novice', 'moyen', 'expert']" :key="item" :col="i+1" borderTopWidth="4" borderBottomWidth="4" :borderColor="i+1 === currentLevel ? 'white':'transparent'" verticalAlignment="center" height="100%" @tap="onSetCurrentLevel($event, i+1)">
+            <GridLayout row="3" columns="20,*,*,*,20" rows="*" :backgroundColor="darkColor">
+                <GridLayout v-for="(item, i) in ['novice', 'moyen', 'expert']" :key="item" row="0" :col="i+1" borderTopWidth="4" :borderColor="i+1 === currentLevel ? 'white':'transparent'" @tap="onSetCurrentLevel($event, i+1)">
                     <Label class="nunitobold" fontSize="18" :color="i+1 === currentLevel ? 'white':'#88ffffff'" :text="item" textAlignment="center" verticalAlignment="center" />
-                </StackLayout>
+                </GridLayout>
             </GridLayout>
         </GridLayout>
     </Page>
@@ -44,9 +44,9 @@
 <script lang="ts">
 import BaseVueComponent from './BaseVueComponent';
 import { Component, Prop } from 'vue-property-decorator';
-import { isAndroid, screen, isIOS } from 'platform';
-import { ObservableArray } from 'data/observable-array/observable-array';
-import { RoomData } from '~/data/data';
+import { isAndroid, screen, isIOS } from 'tns-core-modules/platform';
+import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
+import { RoomData, LevelData } from '~/data/data';
 import { Image } from 'tns-core-modules/ui/image/image';
 import { CubicBezierAnimationCurve } from 'tns-core-modules/ui/animation/animation';
 import { EventData, Page, Color, View, NavigatedData } from 'tns-core-modules/ui/page/page';
@@ -54,6 +54,7 @@ import { TouchGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
 import { getRoomData } from '~/services/data.item.service';
 import { CollectionViewItemEventData, CollectionView } from 'nativescript-collectionview';
 import * as fileSystem from 'tns-core-modules/file-system';
+import * as imageModule from 'nativescript-image';
 const TColor = require('tinycolor2');
 
 import { darkColor, backgroundColor, roomImageHeight, roomHeaderHeight, actionBarHeight } from '../variables';
@@ -83,7 +84,8 @@ export default class Room extends BaseVueComponent {
     public dataItems: ObservableArray<any>;
     constructor() {
         super();
-        console.log('creating room', this.roomId, this.darkColor, this.themeColor);
+        // imageModule.getImagePipeline().clearCaches()
+        // console.log('creating room', this.roomId, this.darkColor, this.themeColor);
         this.roomData = getRoomData(this.roomId);
         this.backButtonColor = this.darkColor;
         const data = this.roomData.data;
@@ -124,7 +126,7 @@ export default class Room extends BaseVueComponent {
         super.mounted();
         this.page.backgroundColor = this.darkColor;
     }
-    createLevelItem(category, levels, lindex) {
+    createLevelItem(category, levels: LevelData[], lindex) {
         const l = levels[lindex];
         return {
             type: 'level',
@@ -132,7 +134,8 @@ export default class Room extends BaseVueComponent {
             category: category,
             level: lindex + 1,
             text: l.text,
-            image: l.image
+            image: l.image,
+            imageRatio: l.imageRatio
         };
     }
 
@@ -166,6 +169,7 @@ export default class Room extends BaseVueComponent {
     }
 
     onImageTap(event, imageSrc: string) {
+        console.log('onImageTap', imageSrc);
         const folder = fileSystem.knownFolders.currentApp();
         photoViewer.showViewer(['file://' + fileSystem.path.join(folder.path, imageSrc.substr(2))]);
     }

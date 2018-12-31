@@ -1,6 +1,11 @@
 export interface RoomDataData {
     description?: string;
-    sections: Array<{ title: string; description?: string; recettes?: RecetteData[]; levels: Array<{ text: string; image?: string }> }>;
+    sections: Array<{ title: string; description?: string; recettes?: RecetteData[]; levels: LevelData[] }>;
+}
+export interface LevelData {
+    text: string;
+    image?: string;
+    imageRatio?: number;
 }
 export interface RoomData {
     color: string;
@@ -186,7 +191,8 @@ export const rooms = [
                     levels: [
                         {
                             text: "J'évite les nettoyants classiques, qui contiennent un ou plusieurs des ingrédients à éviter et/ou qui ont un pictogramme d'alerte : ",
-                            image: '~/images/pictos.png'
+                            image: '~/images/pictos.png',
+                            imageRatio: 0.558
                         },
                         {
                             text:
@@ -315,13 +321,13 @@ export const rooms = [
                             title: '<b>Déodorant maison</b> (testé et adopté par Lucie et Marie)',
                             image: '~/images/recettes/deodorant.jpg',
                             text:
-                                'Faire fondre 40 gr d\'huile de coco et 10 gr de cire d\'abeille (facultatif) (au bain marie, au soleil, ou au dessus d\'un radiateur). Mélanger et verser dans un pot hermétique et propre. Ajouter petit à petit 30gr de bicarbonate de soude et 20gr de fécule de maïs en mélangeant vigoureusement pour éliminer tous les grumeaux. 10min au frigo pour solidifier le mélange. Se conserve plusieurs mois. Recette issue du livre " Famille presque zéro déchet "'
+                                "Faire fondre 40 gr d'huile de coco et 10 gr de cire d'abeille (facultatif) (au bain marie, au soleil, ou au dessus d'un radiateur). Mélanger et verser dans un pot hermétique et propre. Ajouter petit à petit 30gr de bicarbonate de soude et 20gr de fécule de maïs en mélangeant vigoureusement pour éliminer tous les grumeaux. 10min au frigo pour solidifier le mélange. Se conserve plusieurs mois. Recette issue du livre \" Famille presque zéro déchet \""
                         },
                         {
                             title: '<b>Démaquillant maison</b> (testé et adopté par Marie)',
                             image: '~/images/recettes/demaquillant.jpg',
                             text:
-                                'Verser dans un récipient, 50 ml d\'eau de bleuet et 50 ml d\'huile d\'amande douce. Mélanger et votre démaquillant est prêt ! Pensez à bien agiter avant chaque utilisation.\nPetit truc en plus : Vous pouvez aussi réaliser votre démaquillant avec de l\'eau  de rose et de l\'huile de jojoba.'
+                                "Verser dans un récipient, 50 ml d'eau de bleuet et 50 ml d'huile d'amande douce. Mélanger et votre démaquillant est prêt ! Pensez à bien agiter avant chaque utilisation.\nPetit truc en plus : Vous pouvez aussi réaliser votre démaquillant avec de l'eau  de rose et de l'huile de jojoba."
                         }
                     ]
                 },

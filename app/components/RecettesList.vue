@@ -5,12 +5,12 @@
                 <MDCButton class="actionBarButton" variant="text" :text="'mdi-arrow-left' | fonticon" @tap="onTap('back', $event)" />
                 <Label class="actionBarTitle" verticalAlignment="center" :text="'recettes' | uppercase" color="white" />
             </StackLayout>
-            <CollectionView width="100%" height="100%" :items="dataItems" backgroundColor="#F4F4F4" :rowHeight="itemHeight" colWidth="50%">
+            <CollectionView width="100%" height="100%" :items="dataItems" backgroundColor="#F4F4F4" :rowHeight="itemHeight" colWidth="49.8%">
                 <v-template>
                     <GridLayout width="100%" height="100%" rows="*" columns="*">
                         <CardView margin="10" borderRadius="4" @tap="onNavigationItemTap(item)" :rippleColor="themeColor">
                             <StackLayout width="100%" height="100%" orientation="vertical" isUserInteractionEnabled="false">
-                                <Image row="0" borderRadius="4 4 0 0" :height="itemWidth" :src="item.image" stretch="aspectFill" />
+                                <AImage row="0" borderRadius="4 4 0 0" :height="itemWidth" :src="item.image" stretch="aspectFill" />
                                 <HTMLLabel row="1" class="nunito" fontSize="15" width="100%" padding="5" color="black" :html="item.title" isUserInteractionEnabled="false" backgroundColor="transparent" />
                             </StackLayout>
                         </CardView>
@@ -32,7 +32,7 @@ import { getRecettes } from '~/services/data.item.service';
 
 @Component({})
 export default class RecettesList extends BaseVueComponent {
-    dataItems: ObservableArray<RecetteData> = new (ObservableArray as any)(getRecettes());
+    dataItems: ObservableArray<RecetteData> = new ObservableArray();
     public itemWidth = (screen.mainScreen.widthDIPs - 20) / 2;
     public itemHeight = (screen.mainScreen.widthDIPs - 20) / 2 + 100;
     constructor() {
@@ -42,6 +42,7 @@ export default class RecettesList extends BaseVueComponent {
 
     mounted() {
         super.mounted();
+        this.dataItems = new ObservableArray(getRecettes());
     }
     onTap(command: string, args: EventData) {
         switch (command) {
@@ -50,6 +51,9 @@ export default class RecettesList extends BaseVueComponent {
             }
         }
     }
+    // onNavigatedTo() {
+    //    this.dataItems = new ObservableArray(getRecettes());
+    // }
 
     public onNavigationItemTap(tappedItem) {
         import('~/components/Recette.vue').then(Recette => {

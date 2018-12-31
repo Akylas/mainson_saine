@@ -7,7 +7,7 @@
             </StackLayout>
             <ScrollView  row="1" >
                 <StackLayout>
-                <StackLayout padding="15 15 0 15" v-for="(key, index) in Object.keys(lexiqueData).filter(k=>k !== 'Agent pathogène')" :key="key">
+                <StackLayout padding="15 15 0 15" v-for="(key) in Object.keys(lexiqueData).filter(k=>k !== 'Agent pathogène')" :key="key">
                      <Label :text="key" :color="darkColor" fontSize="18" class="nunitobold" borderBottomWidth="2" :borderBottomColor="darkColor"/>
                     <HTMLLabel fontSize="15" class="nunito" padding="5" :html="Array.isArray(lexiqueData[key])?lexiqueData[key].join(', '):lexiqueData[key]" />
                 </StackLayout>
