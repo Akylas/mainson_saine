@@ -59,7 +59,7 @@ function createTiClass(redux, namespace, type, constructorName) {
             return weakMap.get(this);
         }
         getTiProxy = ()=>{
-            console.log('getTiProxy', this);
+            // console.log('getTiProxy', this);
             return this.tiProxy || this
         }
         clearProxy=()=> {
