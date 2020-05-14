@@ -1,0 +1,2 @@
+*Bug fixes*
+- navigationbar color fix
