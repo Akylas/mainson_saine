@@ -10,3 +10,4 @@ platforms
 
 certs
 /.vscode/settings.json
+/fastlane/report.xml
