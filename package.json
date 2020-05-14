@@ -85,8 +85,8 @@
     "webpack-cli": "^3.3.11"
   },
   "commitlint": {
-      "extends": [
-          "@commitlint/config-conventional"
-      ]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

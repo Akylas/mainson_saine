@@ -68,7 +68,7 @@ module.exports = (env, params = {}) => {
     if (env.adhoc) {
         env = Object.assign({}, env, {
             production: true,
-            sentry: true,
+            // sentry: true,
             sourceMap: true,
             uglify: true
         });
