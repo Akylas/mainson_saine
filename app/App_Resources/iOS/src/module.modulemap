@@ -1,0 +1,6 @@
+ module UIViewDispatcher {
+  header "UIView+Dispatcher.h"
+
+  export *
+  module * { export * }
+}

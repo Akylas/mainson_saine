@@ -1,29 +1,104 @@
 <template>
-    <Page ref="page" class="page">
+    <Page ref="page" class="page" :backgroundColor="darkColor" :statusBarColor="darkColor" ios:barStyle="dark" :navigationBarColor="darkColor">
         <GridLayout :rows="mainRows" iosOverflowSafeArea="false" backgroundColor="white">
             <AbsoluteLayout row="0" rowSpan="2">
-                <GridLayout ref="topView" :rows="`*,${actionBarHeight}`" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
-                    <Image row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
-                    <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta * (40 - 15) + 15">
-                        <Label :text="roomData && roomData.title | uppercase" :color="backButtonColor" fontSize="18" class="nunitoblack" verticalAlignment="center" />
+                <GridLayout
+                    id="topView"
+                    ref="topView"
+                    :rows="`*,${actionBarHeight}`"
+                    columns="*"
+                    :height="headerHeight"
+                    backgroundColor="white"
+                    width="100%"
+                >
+                    <Pager row="0" :items="images" :backgroundColor="themeColor" showIndicator>
+                        <v-template>
+                            <GridLayout @tap="onRecetteTap(item)">
+                                <!-- <MapComponent v-show="item.address && item.address.latitude" rowSpan="4" opacity="0.5" /> -->
+                                <Image stretch="aspectFill" :src="item.image" width="100%" height="100%" />
+                                <Label
+                                    textAlignment="left"
+                                    verticalAlignment="bottom"
+                                    class="bottom-gradient"
+                                    padding="10 10 30 10"
+                                    fontSize="16"
+                                    fontWeight="bold"
+                                    color="white"
+                                    :html="item.title"
+                                />
+                            </GridLayout>
+                        </v-template>
+                    </Pager>
+                    <StackLayout
+                        row="1"
+                        orientation="horizontal"
+                        :backgroundColor="titleBackgroundColor"
+                        :paddingLeft="titleDelta * (40 - 15) + 15"
+                    >
+                        <Label
+                            :text="roomData && roomData.title | uppercase"
+                            :color="backButtonColor"
+                            fontSize="18"
+                            class="nunitoblack"
+                            verticalAlignment="center"
+                        />
                     </StackLayout>
                 </GridLayout>
-                <Button class="actionBarButton" text="mdi-arrow-left" :height="actionBarHeight" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
+                <Button
+                    class="actionBarButton"
+                    text="mdi-arrow-left"
+                    :height="actionBarHeight"
+                    :rippleColor="'#88' + backButtonColor.slice(1)"
+                    :color="backButtonColor"
+                    @tap="onTap('back', $event)"
+                    variant="text"
+                />
             </AbsoluteLayout>
-            <CollectionView row="1" rowSpan="2" ref="listView" :items="dataItems" :itemTemplateSelector="templateSelector" backgroundColor="transparent" @scroll="onScroll($event)">
+            <CollectionView
+                row="1"
+                rowSpan="2"
+                ref="listView"
+                :items="dataItems"
+                :itemTemplateSelector="templateSelector"
+                backgroundColor="transparent"
+                @scroll="onScroll($event)"
+            >
                 <v-template name="level">
                     <GridLayout rows="10,20,auto,auto" columns="20,20,*" backgroundColor="white">
-                        <Label col="1" row="1" class="mdi" :text="getLevelIcon(item.level)" :color="darkColor" verticalAlignment="top" />
+                        <Label
+                            col="1"
+                            row="1"
+                            class="mdi"
+                            :text="getLevelIcon(item.level)"
+                            :color="darkColor"
+                            verticalAlignment="top"
+                        />
                         <Label fontSize="15" paddingTop="5" rowSpan="3" col="2" :html="item.text" verticalAlignment="top" />
-                        <Image row="3" col="2" :visibility="!!item.image ? 'visible' : 'collapsed'" :src="item.image" :aspectRatio="item.imageRatio" @tap="onImageTap($event, item.image)" />
+                        <Image
+                            row="3"
+                            col="2"
+                            :visibility="!!item.image ? 'visible' : 'collapsed'"
+                            :src="item.image"
+                            :aspectRatio="item.imageRatio"
+                            @tap="onImageTap($event, item.image)"
+                        />
                     </GridLayout>
                 </v-template>
                 <v-template name="header">
-                    <StackLayout :height="roomImageHeight" width="100%" />
+                    <DispatcherView id="dispatcherView" :height="roomImageHeight" width="100%" @loaded="onHeaderLoaded" />
                 </v-template>
                 <v-template name="section">
                     <GridLayout rows="10,auto" columns="15,*" backgroundColor="white">
-                        <Label row="1" col="1" :text="item.text" :color="darkColor" fontSize="18" class="nunitobold" borderBottomWidth="2" :borderBottomColor="darkColor" />
+                        <Label
+                            row="1"
+                            col="1"
+                            :text="item.text"
+                            :color="darkColor"
+                            fontSize="18"
+                            class="nunitobold"
+                            borderBottomWidth="2"
+                            :borderBottomColor="darkColor"
+                        />
                     </GridLayout>
                 </v-template>
                 <v-template name="description">
@@ -42,7 +117,14 @@
                     :borderColor="i + 1 === currentLevel ? 'white' : 'transparent'"
                     @tap="onSetCurrentLevel($event, i + 1)"
                 >
-                    <Label class="nunitoblack" fontSize="18" :color="i + 1 === currentLevel ? 'white' : '#88ffffff'" :text="item" textAlignment="center" verticalAlignment="center" />
+                    <Label
+                        class="nunitoblack"
+                        fontSize="18"
+                        :color="i + 1 === currentLevel ? 'white' : '#88ffffff'"
+                        :text="item"
+                        textAlignment="center"
+                        verticalAlignment="center"
+                    />
                 </GridLayout>
             </GridLayout>
         </GridLayout>
@@ -68,6 +150,7 @@ const TColor = require('tinycolor2');
 import { darkColor, backgroundColor, roomImageHeight, roomHeaderHeight, actionBarHeight } from '../variables';
 
 import { PhotoViewer, PhotoViewerOptions, PaletteType, NYTPhotoItem } from 'nativescript-photoviewer';
+import { DispatcherView } from './DispatcherView';
 const photoViewer = new PhotoViewer();
 
 const levelIcons = ['mdi-numeric-0-box', 'mdi-numeric-1-box', 'mdi-numeric-2-box', 'mdi-numeric-3-box', 'mdi-numeric-4-box'];
@@ -130,9 +213,26 @@ export default class Room extends BaseVueComponent {
         //     console.log(d.type, d.category, d.text);
         // });
     }
+
+    get images() {
+        let result = [
+            {
+                image: this.roomData && this.roomData.thumbnail
+            }
+        ];
+        if (this.roomData) {
+            this.roomData.data.sections.forEach(s => {
+                result.push(...s.recettes);
+            });
+        }
+        return result;
+    }
     mounted() {
         super.mounted();
-        this.page.backgroundColor = this.darkColor;
+    }
+    onHeaderLoaded(e) {
+        const headerView = e.object as DispatcherView;
+        headerView.dispatcherView = this.topView;
     }
     createLevelItem(category, levels: LevelData[], lindex) {
         const l = levels[lindex];
@@ -157,9 +257,32 @@ export default class Room extends BaseVueComponent {
     get topView() {
         return (this.$refs.topView as any).nativeView as View;
     }
-    templateSelector = (item: any, index: number, items: any) => {
+    templateSelector(item: any, index: number, items: any) {
         return item.type as string;
-    };
+    }
+
+    onRecetteTap(item) {
+        if (item.title) {
+            import('~/components/Recette.vue').then(Recette => {
+                this.$navigateTo(Recette.default, {
+                    animated: true,
+                    transitionAndroid: {
+                        name: 'slideTop',
+                        duration: 200,
+                        curve: 'linear'
+                    },
+                    transitioniOS: {
+                        name: 'slideTop',
+                        duration: 200,
+                        curve: 'linear'
+                    },
+                    props: {
+                        recetteId: item.title
+                    }
+                } as any);
+            });
+        }
+    }
     onScroll(event /*: ListViewScrollEventData*/) {
         // If the header content is still visiible
         let offset = event.scrollOffset;
@@ -208,7 +331,11 @@ export default class Room extends BaseVueComponent {
                     }
                     for (let index = 1; index <= level - this.currentLevel; index++) {
                         if (s.levels[this.currentLevel - 1 + index]) {
-                            this.dataItems.splice(levelStartIndex + index, 0, this.createLevelItem(s.title, s.levels, this.currentLevel - 1 + index));
+                            this.dataItems.splice(
+                                levelStartIndex + index,
+                                0,
+                                this.createLevelItem(s.title, s.levels, this.currentLevel - 1 + index)
+                            );
                         }
                     }
                 });

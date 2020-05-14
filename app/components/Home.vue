@@ -129,11 +129,11 @@ export default class Home extends BaseVueComponent {
         GC();
     }
     onNavigatingTo() {
-        if (isAndroid) {
-            const page = this.page;
-            page.androidStatusBarBackground = null;
-            page.androidStatusBarBackground = new Color(this.darkColor);
-        }
+        // if (isAndroid) {
+        //     const page = this.page;
+        //     page.androidStatusBarBackground = null;
+        //     page.androidStatusBarBackground = new Color(this.darkColor);
+        // }
     }
 
     get imageView() {

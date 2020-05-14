@@ -30,34 +30,35 @@ import { isAndroid, isIOS } from '@nativescript/core/platform';
 Vue.config.silent = !dev;
 Vue.config['debug'] = dev;
 
+
+import PagerPlugin from 'nativescript-pager/vue';
+import { Label, enableIOSDTCoreText } from 'nativescript-htmllabel';
 import CollectionView from 'nativescript-collectionview/vue';
-Vue.use(CollectionView);
 import {installMixins} from 'nativescript-material-core';
-installMixins();
 import { install as installBottomSheets } from 'nativescript-material-bottomsheet';
+import BottomSheetPlugin from 'nativescript-material-bottomsheet/vue';
+import * as imageModule from 'nativescript-image';
+import { installMixins as installUIMixins } from 'nativescript-systemui';
+enableIOSDTCoreText();
+installUIMixins();
+installMixins();
 installBottomSheets();
+Vue.use(CollectionView);
 Vue.registerElement('Button', () => require('nativescript-material-button').Button);
-// registerElement('FloatingActionButton', () => require('nativescript-material-components/floatingactionbutton').FloatingActionButton);
-// registerElement('MDCActivityIndicator', () => require('nativescript-material-components/activityindicator').ActivityIndicator);
 Vue.registerElement('CardView', () => require('nativescript-material-cardview').CardView);
 Vue.registerElement('Ripple', () => require('nativescript-material-ripple').Ripple);
-import BottomSheetPlugin from 'nativescript-material-bottomsheet/vue';
+Vue.registerElement('DispatcherView', () => require('./components/DispatcherView').DispatcherView);
 Vue.use(BottomSheetPlugin);
+Vue.use(PagerPlugin);
+Vue.registerElement('Label', () => Label);
+Vue.registerElement('Image', () => imageModule.Img);
+
+imageModule.initialize({ isDownsampleEnabled: true });
 
 // import { addCategories, enable } from '@nativescript/core/trace';
 // import {CollectionViewTraceCategory} from 'nativescript-collectionview';
 // addCategories(CollectionViewTraceCategory);
 // enable();
-
-import { Label, enableIOSDTCoreText } from 'nativescript-htmllabel';
-enableIOSDTCoreText();
-Vue.registerElement('Label', () => Label);
-
-import * as imageModule from 'nativescript-image';
-Vue.registerElement('Image', () => imageModule.Img);
-imageModule.initialize({ isDownsampleEnabled: true });
-// app.on(app.launchEvent, () => imageModule.initialize({ isDownsampleEnabled: true }), imageModule.getImagePipeline().clearCaches());
-// app.on(app.exitEvent, args => imageModule.shutDown());
 
 import Home from './components/Home.vue';
 

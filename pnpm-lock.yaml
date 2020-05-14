@@ -1,7 +1,7 @@
 dependencies:
   '@mdi/font': 4.9.95
   '@nativescript/core': 6.5.1
-  nativescript-collectionview: 2.0.21
+  nativescript-collectionview: 'link:../../../../usr/local/pnpm-global/node_modules/nativescript-collectionview'
   nativescript-extendedinfo: 1.0.7
   nativescript-fonticon: 2.0.0
   nativescript-htmllabel: 1.0.32
@@ -11,7 +11,9 @@ dependencies:
   nativescript-material-button: 3.2.3
   nativescript-material-cardview: 3.2.3
   nativescript-material-ripple: 3.2.3
+  nativescript-pager: 11.0.11
   nativescript-photoviewer: 2.1.5
+  nativescript-systemui: 'link:../../../../usr/local/pnpm-global/node_modules/nativescript-systemui'
   nativescript-tween: 0.0.6
   nativescript-vue: 2.6.1
   tinycolor2: 1.4.1
@@ -5294,10 +5296,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==
-  /nativescript-collectionview/2.0.21:
-    dev: false
-    resolution:
-      integrity: sha512-J5O7ZsrGEKOFOIyWzm+2ZjftshdtmPH5EvT1nWpOWxLBmuhnPHBLg7xqjG4tcK54FOGIvMxxzRf5BafHkQ7ZBQ==
   /nativescript-dev-webpack/1.5.1_typescript@3.9.2:
     dependencies:
       '@angular-devkit/core': 8.2.0
@@ -5399,6 +5397,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-FpMKLBF3srMhkP2/jqlRa56+Z5JKT1po8B2ZrwFERbs6cVyG8lZjLM2otsPhx9ANfQWfe2yUZGSmxqqcVRweLQ==
+  /nativescript-pager/11.0.11:
+    dev: false
+    resolution:
+      integrity: sha512-A1FcNEPDU4Sr66azblQ4Z1I86/ZOBi+Oq+0C21c4HNnPbz8CttUvNxvh+WA4XP/698HeffB9RCXdaW2s+pATQA==
   /nativescript-photoviewer/2.1.5:
     dev: false
     resolution:
@@ -8325,7 +8327,9 @@ specifiers:
   nativescript-material-button: 3.2.3
   nativescript-material-cardview: 3.2.3
   nativescript-material-ripple: 3.2.3
+  nativescript-pager: 11.0.11
   nativescript-photoviewer: ^2.1.5
+  nativescript-systemui: ^1.0.4
   nativescript-tween: 0.0.6
   nativescript-vue: ^2.6.1
   nativescript-vue-template-compiler: ^2.6.1

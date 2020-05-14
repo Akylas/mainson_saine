@@ -15,23 +15,23 @@ export default class BaseVueComponent extends Vue {
     @Prop({ type: String, default: darkColor })
     darkColor;
     public actionBarHeight = actionBarHeight;
-    get page() {
-        return this.$refs.page && (this.$refs.page as any).nativeView as Page;
-    }
+    // get page() {
+    //     return this.$refs.page && (this.$refs.page as any).nativeView as Page;
+    // }
     mounted() {
-        const page = this.page;
-        if (page) {
-            // page.backgroundSpanUnderStatusBar = true;
-            page.actionBarHidden = true;
-            if (isIOS) {
-                page.statusBarStyle = 'dark';
-            } else {
-                page.androidStatusBarBackground = null;
-                page.androidStatusBarBackground = new Color(this.darkColor);
-            }
-            page.backgroundColor = this.themeColor;
+        // const page = this.page;
+        // if (page) {
+        //     // page.backgroundSpanUnderStatusBar = true;
+        //     page.actionBarHidden = true;
+        //     if (isIOS) {
+        //         page.statusBarStyle = 'dark';
+        //     } else {
+        //         page.androidStatusBarBackground = null;
+        //         page.androidStatusBarBackground = new Color(this.darkColor);
+        //     }
+        //     page.backgroundColor = this.themeColor;
 
-        }
+        // }
     }
 
     // get darkColor() {

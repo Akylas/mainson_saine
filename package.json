@@ -32,7 +32,9 @@
     "nativescript-material-button": "3.2.3",
     "nativescript-material-cardview": "3.2.3",
     "nativescript-material-ripple": "3.2.3",
+    "nativescript-pager": "11.0.11",
     "nativescript-photoviewer": "^2.1.5",
+    "nativescript-systemui": "^1.0.4",
     "nativescript-tween": "0.0.6",
     "nativescript-vue": "^2.6.1",
     "tinycolor2": "^1.4.1"

@@ -2,7 +2,10 @@
 @import './variables';
 
 page {
-    action-bar-hidden:true
+    action-bar-hidden:true;
+    background-color: $primary-color;
+    status-bar-color:$dark-color;
+    bar-style:dark;
 }
 
 button {
