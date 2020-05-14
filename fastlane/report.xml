@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: Verifying fastlane version" time="0.001577">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: Switch to ios checkGitStatus lane" time="0.001265">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: Switch to ios tns_install lane" time="0.001371">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: tns install" time="7.053048">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: Switch to ios build_flavor lane" time="0.002006">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: ./node_modules/.bin/get-version ios version" time="0.132309">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: ./node_modules/.bin/get-version ios code" time="0.1073">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: Switch to ios build lane" time="0.002489">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: match" time="15.237868">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: Switch to ios prepare lane" time="0.001399">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: rm -fr platforms/ios" time="0.008726">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: tns prepare ios --release --clean --env.production --env.uglify --env.adhoc --env.snapshot --env.compileSnapshot" time="52.494562">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: build_ios_app" time="125.880064">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: sentry_create_release" time="0.54502">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="14: Switch to ios sentry_upload lane" time="0.00188">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="15: sentry_upload_dsym" time="4.606097">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="16: Switch to ios get_changelog lane" time="0.002696">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="17: analyze_commits" time="0.515699">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="18: conventional_changelog" time="0.048122">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="19: Switch to ios upload_store lane" time="0.001585">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="20: upload_to_testflight" time="12769.164796">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

@@ -1,0 +1,41 @@
+<template>
+    <GridLayout height="400" @shownInBottomSheet="onShownInBottomSheet()" borderRadius="10">
+        <CollectionView id="trackingScrollView" :items="dataItems" rowHeight="60" :itemIdGenerator="(item,i)=>i">
+            <v-template>
+                <GridLayout @tap="onTap(item)" class="listitem" padding="10">
+                    <StackLayout class="title-holder">
+                        <Label class="title" :text="item.moduleName" />
+                        <Label class="subtitle" :text="item.moduleUrl" />
+                    </StackLayout>
+                </GridLayout>
+                <!-- <ListItem :title="item.moduleName" :subtitle="item.moduleUrl" :date="item.moduleVersion" @tap="onTap(item)" /> -->
+            </v-template>
+        </CollectionView>
+    </GridLayout>
+</template>
+
+<script lang="ts">
+import { Component } from 'vue-property-decorator';
+import BaseVueComponent from './BaseVueComponent';
+import { openUrl } from '@nativescript/core/utils/utils';
+
+const licences = require(`~/${gVars.platform}/licenses.json`);
+
+@Component
+export default class ThirdPartySoftwareBottomSheet extends BaseVueComponent {
+    dataItems: {
+        moduleName: string;
+        moduleUrl: string;
+        moduleLicense: string;
+    }[] = licences.dependencies;
+    mounted() {
+        super.mounted();
+    }
+    onShownInBottomSheet() {}
+    onTap(item) {
+        if (item.moduleUrl) {
+            openUrl(item.moduleUrl);
+        }
+    }
+}
+</script>

@@ -3,15 +3,15 @@
         <StackLayout backgroundColor="white" iosOverflowSafeArea="false">
             <AbsoluteLayout>
                 <GridLayout :rows="'*,auto'" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
-                    <AImage row="0" :src="recetteData.image" stretch="aspectFill" />
+                    <Image row="0" :src="recetteData.image" stretch="aspectFill" />
                     <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta*actionBarHeight + 15">
-                        <HTMLLabel class="nunito" padding="5" fontSize="20" :html="recetteData.title" :color="backButtonColor" verticalAlignment="center" />
+                        <Label padding="5" fontSize="20" :html="recetteData.title" :color="backButtonColor" verticalAlignment="center" />
                     </StackLayout>
                 </GridLayout>
-                <MDCButton class="actionBarButton" :text="'mdi-arrow-left' | fonticon" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
+                <Button class="actionBarButton" text="mdi-arrow-left" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
             </AbsoluteLayout>
             <ScrollView>
-                <HTMLLabel class="nunito" padding="5" fontSize="15" :html="recetteData.text" />
+                <Label padding="5" fontSize="15" :html="recetteData.text" />
             </ScrollView>
         </StackLayout>
     </Page>
@@ -20,11 +20,11 @@
 <script lang="ts">
 import BaseVueComponent from './BaseVueComponent';
 import { Component, Prop } from 'vue-property-decorator';
-import { screen } from 'platform';
-import { ObservableArray } from 'data/observable-array/observable-array';
+import { screen } from '@nativescript/core/platform';
+import { ObservableArray } from '@nativescript/core/data/observable-array/observable-array';
 import { RecetteData } from '~/data/data';
-import { Image } from 'tns-core-modules/ui/image/image';
-import { EventData } from 'tns-core-modules/ui/page/page';
+import { Image } from '@nativescript/core/ui/image/image';
+import { EventData } from '@nativescript/core/ui/page/page';
 import { getRecetteData } from '~/services/data.item.service';
 
 import { actionBarHeight, backgroundColor, darkColor, roomHeaderHeight } from '../variables';

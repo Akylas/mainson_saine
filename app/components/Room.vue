@@ -1,21 +1,21 @@
 <template>
     <Page ref="page" class="page">
         <GridLayout :rows="mainRows" iosOverflowSafeArea="false" backgroundColor="white">
-            <AbsoluteLayout row=0 rowSpan="2">
-                <GridLayout ref="topView" rows="*,51" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
-                    <AImage row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
-                    <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta*actionBarHeight + 15">
+            <AbsoluteLayout row="0" rowSpan="2">
+                <GridLayout ref="topView" :rows="`*,${actionBarHeight}`" columns="*" :height="headerHeight" backgroundColor="white" width="100%">
+                    <Image row="0" :src="roomData && roomData.thumbnail" stretch="aspectFill" />
+                    <StackLayout row="1" orientation="horizontal" :backgroundColor="titleBackgroundColor" :paddingLeft="titleDelta * (40 - 15) + 15">
                         <Label :text="roomData && roomData.title | uppercase" :color="backButtonColor" fontSize="18" class="nunitoblack" verticalAlignment="center" />
                     </StackLayout>
                 </GridLayout>
-                <MDCButton class="actionBarButton" :text="'mdi-arrow-left' | fonticon" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
+                <Button class="actionBarButton" text="mdi-arrow-left" :height="actionBarHeight" :rippleColor="'#88' + backButtonColor.slice(1)" :color="backButtonColor" @tap="onTap('back', $event)" variant="text" />
             </AbsoluteLayout>
             <CollectionView row="1" rowSpan="2" ref="listView" :items="dataItems" :itemTemplateSelector="templateSelector" backgroundColor="transparent" @scroll="onScroll($event)">
                 <v-template name="level">
                     <GridLayout rows="10,20,auto,auto" columns="20,20,*" backgroundColor="white">
-                        <Label col="1" row="1" class="mdi" :text="'mdi-numeric-' + item.level + '-box' | fonticon" :color="darkColor" verticalAlignment="top" />
-                        <HTMLLabel fontSize="15" class="nunito" paddingTop="5" rowSpan="3" col="2" :html="item.text" verticalAlignment="top" />
-                        <AImage row="3" col="2" :visibility="!!item.image ? 'visible' : 'collapsed'" :src="item.image" :aspectRatio="item.imageRatio" @tap="onImageTap($event, item.image)" />
+                        <Label col="1" row="1" class="mdi" :text="getLevelIcon(item.level)" :color="darkColor" verticalAlignment="top" />
+                        <Label fontSize="15" paddingTop="5" rowSpan="3" col="2" :html="item.text" verticalAlignment="top" />
+                        <Image row="3" col="2" :visibility="!!item.image ? 'visible' : 'collapsed'" :src="item.image" :aspectRatio="item.imageRatio" @tap="onImageTap($event, item.image)" />
                     </GridLayout>
                 </v-template>
                 <v-template name="header">
@@ -28,13 +28,21 @@
                 </v-template>
                 <v-template name="description">
                     <GridLayout rows="auto,15" columns="*" backgroundColor="white">
-                        <HTMLLabel row="0" fontSize="15" class="nunito" padding="5" :html="item.text" />
+                        <Label row="0" fontSize="15" padding="5" :html="item.text" />
                     </GridLayout>
                 </v-template>
             </CollectionView>
             <GridLayout row="3" columns="20,*,*,*,20" rows="*" :backgroundColor="darkColor">
-                <GridLayout v-for="(item, i) in ['novice', 'moyen', 'expert']" :key="item" row="0" :col="i+1" borderTopWidth="4" :borderColor="i+1 === currentLevel ? 'white':'transparent'" @tap="onSetCurrentLevel($event, i+1)">
-                    <Label class="nunitobold" fontSize="18" :color="i+1 === currentLevel ? 'white':'#88ffffff'" :text="item" textAlignment="center" verticalAlignment="center" />
+                <GridLayout
+                    v-for="(item, i) in ['novice', 'moyen', 'expert']"
+                    :key="item"
+                    row="0"
+                    :col="i + 1"
+                    borderTopWidth="4"
+                    :borderColor="i + 1 === currentLevel ? 'white' : 'transparent'"
+                    @tap="onSetCurrentLevel($event, i + 1)"
+                >
+                    <Label class="nunitoblack" fontSize="18" :color="i + 1 === currentLevel ? 'white' : '#88ffffff'" :text="item" textAlignment="center" verticalAlignment="center" />
                 </GridLayout>
             </GridLayout>
         </GridLayout>
@@ -44,25 +52,25 @@
 <script lang="ts">
 import BaseVueComponent from './BaseVueComponent';
 import { Component, Prop } from 'vue-property-decorator';
-import { isAndroid, screen, isIOS } from 'tns-core-modules/platform';
-import { ObservableArray } from 'tns-core-modules/data/observable-array/observable-array';
+import { isAndroid, screen, isIOS } from '@nativescript/core/platform';
+import { ObservableArray } from '@nativescript/core/data/observable-array/observable-array';
 import { RoomData, LevelData } from '~/data/data';
-import { Image } from 'tns-core-modules/ui/image/image';
-import { CubicBezierAnimationCurve } from 'tns-core-modules/ui/animation/animation';
-import { EventData, Page, Color, View, NavigatedData } from 'tns-core-modules/ui/page/page';
-import { TouchGestureEventData } from 'tns-core-modules/ui/gestures/gestures';
+import { Image } from '@nativescript/core/ui/image/image';
+import { CubicBezierAnimationCurve } from '@nativescript/core/ui/animation/animation';
+import { EventData, Page, Color, View, NavigatedData } from '@nativescript/core/ui/page/page';
+import { TouchGestureEventData } from '@nativescript/core/ui/gestures/gestures';
 import { getRoomData } from '~/services/data.item.service';
 import { CollectionViewItemEventData, CollectionView } from 'nativescript-collectionview';
-import * as fileSystem from 'tns-core-modules/file-system';
+import * as fileSystem from '@nativescript/core/file-system';
 import * as imageModule from 'nativescript-image';
 const TColor = require('tinycolor2');
 
 import { darkColor, backgroundColor, roomImageHeight, roomHeaderHeight, actionBarHeight } from '../variables';
 
-const PhotoViewer = require('nativescript-photoviewer');
-
+import { PhotoViewer, PhotoViewerOptions, PaletteType, NYTPhotoItem } from 'nativescript-photoviewer';
 const photoViewer = new PhotoViewer();
 
+const levelIcons = ['mdi-numeric-0-box', 'mdi-numeric-1-box', 'mdi-numeric-2-box', 'mdi-numeric-3-box', 'mdi-numeric-4-box'];
 @Component({})
 export default class Room extends BaseVueComponent {
     public roomData: RoomData;
@@ -139,6 +147,10 @@ export default class Room extends BaseVueComponent {
         };
     }
 
+    getLevelIcon(level: number) {
+        return levelIcons[level];
+    }
+
     get listView() {
         return (this.$refs.listView as any).nativeView as CollectionView;
     }
@@ -169,9 +181,8 @@ export default class Room extends BaseVueComponent {
     }
 
     onImageTap(event, imageSrc: string) {
-        console.log('onImageTap', imageSrc);
         const folder = fileSystem.knownFolders.currentApp();
-        photoViewer.showViewer(['file://' + fileSystem.path.join(folder.path, imageSrc.substr(2))]);
+        photoViewer.showGallery(['file://' + fileSystem.path.join(folder.path, imageSrc.substr(2))]);
     }
     handleSetCurrentLevel(level: number) {
         if (this.currentLevel !== level) {

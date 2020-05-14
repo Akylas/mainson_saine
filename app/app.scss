@@ -11,8 +11,25 @@ button {
     background-color: transparent;
 }
 
+.mdi {
+    font-family: $mdi-fontFamily;
+}
+
+.nunito {
+    font-family: $nunito-fontFamily;
+}
+
+.nunitobold {
+    font-family: $nunito-fontFamily;
+    font-weight: 500;
+}
+.nunitoblack {
+    font-family: $nunito-fontFamily;
+    font-weight: 900;
+}
 label,
 htmllabel {
+    @extend .nunito;
     white-space: normal;
 }
 
@@ -21,22 +38,6 @@ mdcbutton {
     ripple-color: $primary-color;
 }
 
-.mdi {
-    font-family: 'Material Design Icons';
-}
-
-.nunito {
-    font-family: 'Nunito', 'nunito-regular';
-}
-
-.nunitobold {
-    font-family: 'Nunito', 'nunito-bold';
-    font-weight: 500;
-}
-.nunitoblack {
-    font-family: 'Nunito', 'nunito-black';
-    font-weight: 900;
-}
 
 .themedBack {
     background-color: $primary-color;

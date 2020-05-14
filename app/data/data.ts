@@ -384,7 +384,7 @@ export const rooms = [
                         },
                         {
                             text: "J'utilise des <b>gants de toilette</b> ou <b>pièces de coton lavables et réutilisables</b>."
-                        }
+                        }   
                     ],
                     recettes: [
                         {
