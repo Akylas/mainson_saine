@@ -6,7 +6,6 @@
                     id="topView"
                     ref="topView"
                     :rows="`*,${actionBarHeight}`"
-                    columns="*"
                     :height="headerHeight"
                     backgroundColor="white"
                     width="100%"
@@ -33,7 +32,7 @@
                         row="1"
                         orientation="horizontal"
                         :backgroundColor="titleBackgroundColor"
-                        :paddingLeft="titleDelta * (40 - 15) + 15"
+                        :paddingLeft="titleDelta * (40) + 15"
                     >
                         <Label
                             :text="roomData && roomData.title | uppercase"
@@ -85,7 +84,7 @@
                     </GridLayout>
                 </v-template>
                 <v-template name="header">
-                    <DispatcherView id="dispatcherView" :height="roomImageHeight" width="100%" @loaded="onHeaderLoaded" />
+                    <DispatcherView id="dispatcherView" :height="roomImageHeight" width="100%" @loaded="onHeaderLoaded" exclusiveTouch/>
                 </v-template>
                 <v-template name="section">
                     <GridLayout rows="10,auto" columns="15,*" backgroundColor="white">
@@ -286,7 +285,9 @@ export default class Room extends BaseVueComponent {
     onScroll(event /*: ListViewScrollEventData*/) {
         // If the header content is still visiible
         let offset = event.scrollOffset;
-        this.topView.height = Math.max(roomHeaderHeight - offset, actionBarHeight);
+        // the -1 is for edge case on android where a rounded issue might cause un unwanted pixel line
+        this.topView.height = Math.max(roomHeaderHeight - offset, actionBarHeight -1);
+        
         if (offset >= roomImageHeight) {
             this.titleDelta = 1;
             this.backButtonColor = '#ffffff';

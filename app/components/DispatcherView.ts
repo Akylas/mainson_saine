@@ -8,9 +8,7 @@ declare module '@nativescript/core/ui/core/view' {
 }
 
 let TouchListener: TouchListener;
-interface TouchListener {
-    new (owner: View): android.view.View.OnTouchListener;
-}
+type TouchListener = new (owner: View) => android.view.View.OnTouchListener;
 
 function initializeTouchListener(): void {
     if (TouchListener) {
@@ -34,7 +32,6 @@ function initializeTouchListener(): void {
             }
             owner.handleGestureTouch(event);
 
-            
             return owner.onTouchEvent(event);
         }
     }
@@ -71,14 +68,14 @@ export class DispatcherView extends View {
             }
         }
     }
-     setOnTouchListener() {
+    setOnTouchListener() {
         if (!this.nativeViewProtected) {
             return;
         }
         // do not set noop listener that handles the event (disabled listener) if IsUserInteractionEnabled is
         // false as we might need the ability for the event to pass through to a parent view
         initializeTouchListener();
-        this.touchListener = this.touchListener || new TouchListener(this) as any;
+        this.touchListener = this.touchListener || (new TouchListener(this) as any);
         this.nativeViewProtected.setOnTouchListener(this.touchListener);
 
         this.touchListenerIsSet = true;
@@ -94,14 +91,31 @@ export class DispatcherView extends View {
         }
         return super.handleGestureTouch(event);
     }
+    exclusiveTouch = false;
     onTouchEvent(event) {
-        if (this._dispatcherView ) {
+        const nativeView = this.nativeViewProtected;
+        const action = event.getAction();
+        if (this.exclusiveTouch) {
+            const parent = nativeView.getParent();
+            if (parent != null) {
+                switch (action) {
+                    case android.view.MotionEvent.ACTION_MOVE:
+                        parent.requestDisallowInterceptTouchEvent(true);
+                        break;
+                    case android.view.MotionEvent.ACTION_UP:
+                    case android.view.MotionEvent.ACTION_OUTSIDE:
+                    case android.view.MotionEvent.ACTION_CANCEL:
+                        parent.requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+            }
+        }
+        if (this._dispatcherView) {
             return (this._dispatcherView.nativeViewProtected as android.view.View).dispatchTouchEvent(event);
         }
-        let nativeView = this.nativeViewProtected;
-            if (!nativeView || !nativeView.onTouchEvent) {
-                return false;
-            }
+        if (!nativeView || !nativeView.onTouchEvent) {
+            return false;
+        }
 
         return nativeView.onTouchEvent(event);
     }
