@@ -1,6 +1,6 @@
 export interface RoomDataData {
     description?: string;
-    sections: Array<{ title: string; description?: string; recettes?: RecetteData[]; levels: LevelData[] }>;
+    sections: { title: string; description?: string; recettes?: RecetteData[]; levels: LevelData[] }[];
 }
 export interface LevelData {
     text: string;
@@ -67,7 +67,8 @@ export const rooms = [
                                 "<b>J'évite</b> au maximum les <b>contenants en plastique, téflon et aluminium</b> qui ne sont pas des matériaux stables. <b>Je n'utilise plus les casseroles si le téflon est éraflé, je ne chauffe jamais d'aliments dans un récipient en plastique</b>, cela accélère la diffusion d'éléments tels que le bisphénol A-S et F vers les aliments, qui sont des perturbateurs endocriniens connus. <b>Je bannis le film alimentaire</b> qui contient aussi des bisphénols."
                         },
                         {
-                            text: '<b>Je préfère</b>  les <b>ustensiles et contenants en bois, verre, céramique</b> ou <b>acier inoxydable</b>.'
+                            text:
+                                '<b>Je préfère</b>  les <b>ustensiles et contenants en bois, verre, céramique</b> ou <b>acier inoxydable</b>.'
                         }
                     ]
                 },
@@ -83,7 +84,8 @@ export const rooms = [
                                 "<b>Je nettoie</b> le réfrigérateur et/ou l'évier régulièrement <b>avec du vinaigre blanc. Je remplace mon produit vaisselle par un bloc de savon de Marseille</b> (testé et fortement approuvé par Caroline)"
                         },
                         {
-                            text: 'Je fabrique mon éponge maison (" Tawashi ") avec des tissus hors d\'usage : increvable ! Testé et approuvé par Lucie'
+                            text:
+                                'Je fabrique mon éponge maison (" Tawashi ") avec des tissus hors d\'usage : increvable ! Testé et approuvé par Lucie'
                         }
                     ]
                 }
@@ -91,7 +93,7 @@ export const rooms = [
         }
     },
     {
-        color: '#FFF7C7',
+        color: '#FFF1A3',
         title: 'chambre de bébé',
         thumbnail: '~/images/banner_chambre.png',
         data: {
@@ -104,7 +106,8 @@ export const rooms = [
                                 "<b>J'aère la chambre</b> au minimum 10minutes par jour pour limiter les Composés Organiques Volatils, le formaldéhyde, les moisissures, la poussière etc.... Je fais le ménage régulièrement pour éviter les moisissures et la poussière."
                         },
                         {
-                            text: "<b>J'évite la diffusion d'huiles essentielles</b> à proximité de bébé avant ses 3ans. <b>Pas de désodorisants ou de parfums</b> dans la chambre de bébé."
+                            text:
+                                "<b>J'évite la diffusion d'huiles essentielles</b> à proximité de bébé avant ses 3ans. <b>Pas de désodorisants ou de parfums</b> dans la chambre de bébé."
                         },
                         {
                             text:
@@ -116,14 +119,16 @@ export const rooms = [
                     title: 'Meubles',
                     levels: [
                         {
-                            text: "<b>Je prépare la chambre de bébé plusieurs semaines à l'avance afin d'aérer au maximum les meubles, matelas, poussette ou couffin</b>."
+                            text:
+                                "<b>Je prépare la chambre de bébé plusieurs semaines à l'avance afin d'aérer au maximum les meubles, matelas, poussette ou couffin</b>."
                         },
                         {
                             text:
                                 "<b>J'évite les meubles en contreplaqué ou en aggloméré</b> qui contiennent plus de colle et d'autres sources de Composés Organiques Volatils. De préférence je choisis des meubles et matelas fabriqués en Europe voire en France, les réglementations étant souvent plus strictes. Je choisis de préférence des meubles labellisés (par exemple : Ecolabel européen, label FSC, Ange bleu)"
                         },
                         {
-                            text: "<b>Je choisis des meubles en bois massif sans vernis</b>, et/ou <b>d'occasion</b> qui rejetteront beaucoup moins de Composés Organiques Volatils (et moins chers !)."
+                            text:
+                                "<b>Je choisis des meubles en bois massif sans vernis</b>, et/ou <b>d'occasion</b> qui rejetteront beaucoup moins de Composés Organiques Volatils (et moins chers !)."
                         }
                     ]
                 },
@@ -148,7 +153,8 @@ export const rooms = [
                     title: 'Vêtements',
                     levels: [
                         {
-                            text: "<b>Je lave toujours les vêtements avant un premier usage</b>. Si un vêtement perd toujours de la couleur au 2e lavage je ne l'utilise pas."
+                            text:
+                                "<b>Je lave toujours les vêtements avant un premier usage</b>. Si un vêtement perd toujours de la couleur au 2e lavage je ne l'utilise pas."
                         },
                         {
                             text:
@@ -171,7 +177,8 @@ export const rooms = [
                                 "<b>J'évite les jouets électroniques, tablettes et jouets connectés</b> qui augmentent l'exposition aux ondes électromagnétiques. Les piles contiennent des retardateurs de flammes et des fluides toxiques. Les écrans sont eux déconseillés par le Conseil Supérieur de l'Audiovisuel avant 3ans."
                         },
                         {
-                            text: "<b>Je préfère les jouets en bois</b>, idéalement brut, sans vernis. Si j'opte pour des jouets <b>en plastique</b> je les choisis sans phtalates et sans PVC."
+                            text:
+                                "<b>Je préfère les jouets en bois</b>, idéalement brut, sans vernis. Si j'opte pour des jouets <b>en plastique</b> je les choisis sans phtalates et sans PVC."
                         }
                     ]
                 }
@@ -190,7 +197,8 @@ export const rooms = [
                     title: 'Nettoyant multi-usage (éviers, lavabos, robinetterie, frigo, plans de travail, douche, vitres...)',
                     levels: [
                         {
-                            text: "J'évite les nettoyants classiques, qui contiennent un ou plusieurs des ingrédients à éviter et/ou qui ont un pictogramme d'alerte : ",
+                            text:
+                                "J'évite les nettoyants classiques, qui contiennent un ou plusieurs des ingrédients à éviter et/ou qui ont un pictogramme d'alerte : ",
                             image: '~/images/pictos.png',
                             imageRatio: 0.558
                         },
@@ -238,10 +246,12 @@ export const rooms = [
                     title: 'Nettoyant pour le sol',
                     levels: [
                         {
-                            text: "J'évite les produits spécifiques pour le sol qui ne sont pas nécessaires et peuvent s'avérer toxiques."
+                            text:
+                                "J'évite les produits spécifiques pour le sol qui ne sont pas nécessaires et peuvent s'avérer toxiques."
                         },
                         {
-                            text: "Je nettoie les sols (parquets, carrelage, PVC) avec une cuillère à soupe de savon noir dans un seau d'eau chaude."
+                            text:
+                                "Je nettoie les sols (parquets, carrelage, PVC) avec une cuillère à soupe de savon noir dans un seau d'eau chaude."
                         }
                     ]
                 },
@@ -265,13 +275,16 @@ export const rooms = [
                     title: 'Lessive',
                     levels: [
                         {
-                            text: "Je respecte les doses de lessive recommandées et je choisis un rinçage long. Je n'utilise pas d'adoucissants, d'antibactériens ou de détachants."
+                            text:
+                                "Je respecte les doses de lessive recommandées et je choisis un rinçage long. Je n'utilise pas d'adoucissants, d'antibactériens ou de détachants."
                         },
                         {
-                            text: "Je préfère les lessives en poudre qui contiennent moins d'agents de surface. Le lavage à 30° est le plus souvent suffisant, le prélavage est rarement utile."
+                            text:
+                                "Je préfère les lessives en poudre qui contiennent moins d'agents de surface. Le lavage à 30° est le plus souvent suffisant, le prélavage est rarement utile."
                         },
                         {
-                            text: 'Si je dois faire un prélavage je le fais avec du savon  noir ou de Marseille. Je fabrique ma lessive maison selon la recette testée et adoptée par Léa.'
+                            text:
+                                'Si je dois faire un prélavage je le fais avec du savon  noir ou de Marseille. Je fabrique ma lessive maison selon la recette testée et adoptée par Léa.'
                         }
                     ],
                     recettes: [
@@ -307,10 +320,12 @@ export const rooms = [
                     title: 'Déodorant',
                     levels: [
                         {
-                            text: "<b>J'évite les déodorants en spray</b> qui contiennent des Composés Organiques Volatiles dangereux pour la santé et l'environnement, <b>je préfère les sticks</b>."
+                            text:
+                                "<b>J'évite les déodorants en spray</b> qui contiennent des Composés Organiques Volatiles dangereux pour la santé et l'environnement, <b>je préfère les sticks</b>."
                         },
                         {
-                            text: "Je choisis un déodorant <b>sans alcool, ni sels d'aluminium</b> fortement suspectés de favoriser le cancer du sein."
+                            text:
+                                "Je choisis un déodorant <b>sans alcool, ni sels d'aluminium</b> fortement suspectés de favoriser le cancer du sein."
                         },
                         {
                             text: "J'utilise notre recette <b>huile de coco et bicarbonate</b>."
@@ -339,7 +354,8 @@ export const rooms = [
                                 "<b>J'évite</b> les gels douches (et savons) qui contiennent des <b>parabens</b> - perturbateurs endocriniens connus-,  des <b>parfums / arômes</b> -allergènes- ou du <b>triclosan</b> - perturbateur endocrinien, toxique environnemental, probable cancérigène, suspecté de développer la résistance bactérienne-. Je <b>bannis les produits exfoliants</b> qui contiennent des microbilles de plastique qui polluent ensuite les cours d'eau et océans, je retourne au bon vieux gant de crin."
                         },
                         {
-                            text: "J'utilise un <b>pain de savon à base végétale</b> (de Marseille, d'Alep....etc.) dont la liste de composants est courte, de préférence d'origine biologique."
+                            text:
+                                "J'utilise un <b>pain de savon à base végétale</b> (de Marseille, d'Alep....etc.) dont la liste de composants est courte, de préférence d'origine biologique."
                         },
                         {
                             text: 'Je choisis un pain de savon à base végétale (cf. 2) vendu sans emballage. '
@@ -354,7 +370,8 @@ export const rooms = [
                                 "J'évite les shampoings qui contiennent des parabens -perturbateurs endocriniens-,  des parfums / arômes -allergènes-. Si j'utilise un après-shampoing je le rince abondamment."
                         },
                         {
-                            text: 'Je choisis un shampoing dont la liste de composants est courte, avec des ingrédients certifiés biologiques de préférence.'
+                            text:
+                                'Je choisis un shampoing dont la liste de composants est courte, avec des ingrédients certifiés biologiques de préférence.'
                         },
                         {
                             text: 'Je choisis un shampoing solide certifié biologique, sans emballage.'
@@ -380,11 +397,12 @@ export const rooms = [
                                 "<b>J'évite les lingettes à usage unique</b> dont la composition retrouve souvent des produits dangereux pour la santé de bébé et qui produisent beaucoup de déchets. Si j'en utilise je les jette dans la poubelle, jamais dans les toilettes."
                         },
                         {
-                            text: "J'utilise de <b>l'eau et du savon ou du liniment</b>, acheté ou fabriqué maison selon notre recette, sur des cotons."
+                            text:
+                                "J'utilise de <b>l'eau et du savon ou du liniment</b>, acheté ou fabriqué maison selon notre recette, sur des cotons."
                         },
                         {
                             text: "J'utilise des <b>gants de toilette</b> ou <b>pièces de coton lavables et réutilisables</b>."
-                        }   
+                        }
                     ],
                     recettes: [
                         {
@@ -415,10 +433,12 @@ export const rooms = [
                                 "<b>J'évite</b> les crèmes ou huiles qui contiennent des <b>senteurs / arômes / parfums / fragrances</b> qui sont allergènes. <b>J'évite</b> les produits contenants <b>parabens, phénoxyéthanol ou isothiazolinone</b>."
                         },
                         {
-                            text: "Je préfère une crème ou huile de massage / d'hydratation dont la liste de composants est courte, de préférence certifiée biologique."
+                            text:
+                                "Je préfère une crème ou huile de massage / d'hydratation dont la liste de composants est courte, de préférence certifiée biologique."
                         },
                         {
-                            text: "J'utilise une huile végétale d'origine biologique : huile d'olive ou beurre de karité par exemple."
+                            text:
+                                "J'utilise une huile végétale d'origine biologique : huile d'olive ou beurre de karité par exemple."
                         }
                     ]
                 },
@@ -434,7 +454,8 @@ export const rooms = [
                                 "<b>J'évite</b> les savons et/ou shampoings qui contiennent des <b>senteurs / arômes / parfums / fragrances</b> qui sont allergènes. Je choisis un produit <b>sans parabens, sans phénoxyéthanol, ni Sodium Laureth Sulfate (SLS)</b> qui dessèche et irrite la peau."
                         },
                         {
-                            text: 'Je préfère un savon/shampoing dont la liste de composants est courte, de préférence certifié biologique. Je préfère un produit qui contient une huile végétale.'
+                            text:
+                                'Je préfère un savon/shampoing dont la liste de composants est courte, de préférence certifié biologique. Je préfère un produit qui contient une huile végétale.'
                         }
                     ]
                 },
@@ -442,10 +463,12 @@ export const rooms = [
                     title: 'Dentifrice',
                     levels: [
                         {
-                            text: "<b>Avant 3 ans</b> je choisis un dentifrice <b>sans fluor</b> dont l'accumulation au quotidien peut entraîner une atteinte de l'émail."
+                            text:
+                                "<b>Avant 3 ans</b> je choisis un dentifrice <b>sans fluor</b> dont l'accumulation au quotidien peut entraîner une atteinte de l'émail."
                         },
                         {
-                            text: 'Je préfère un dentifrice <b>sans Sodium Laureth Sulfate, sans Triclosan, et sans " goût sucré "</b>.'
+                            text:
+                                'Je préfère un dentifrice <b>sans Sodium Laureth Sulfate, sans Triclosan, et sans " goût sucré "</b>.'
                         },
                         {
                             text: 'Je choisis un dentifrice adapté aux enfants et certifié biologique.'
