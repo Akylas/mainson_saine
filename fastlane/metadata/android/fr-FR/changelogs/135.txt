@@ -1,0 +1,5 @@
+*Bug fixes*
+- *android:* correct font weight
+- refresh on mount
+- better home layout
+- *android:* better scroll in rooms
