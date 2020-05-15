@@ -10,8 +10,7 @@
                 </AbsoluteLayout>
                 <Button row="0" col="1" class="actionBarButton" text="mdi-information-outline" @tap="onTap('help', $event)" variant="text" />
             </GridLayout>
-            <AbsoluteLayout row="1">
-                <CollectionView top="10" width="100%" height="100%" rowHeight="60" :items="dataItems" :backgroundColor="backgroundColor" :itemIdGenerator="(item,i)=>i">
+            <CollectionView  row="1" marginTop="10" rowHeight="60" :items="dataItems" :backgroundColor="backgroundColor" :itemIdGenerator="(item,i)=>i">
                     <v-template>
                         <GridLayout columns="50,*" width="100%" :backgroundColor="backgroundColor" :rippleColor="item.darkColor" @tap="onNavigationItemTap(item)">
                             <Image col="0" :visibility="!!item.thumbnail ? 'visible' : 'collapsed'" :src="item.thumbnail" stretch="aspectFill" isUserInteractionEnabled="false" />
@@ -40,8 +39,7 @@
                         </GridLayout>
                     </v-template>
                 </CollectionView>
-                <StackLayout width="100%" height="20" background="linear-gradient(to bottom, #D1EDF7, #D1EDF7, #00D1EDF7)" />
-            </AbsoluteLayout>
+                <StackLayout width="100%" row="1"verticalAlignment="top" height="20" background="linear-gradient(to bottom, #D1EDF7, #D1EDF7, #00D1EDF7)" />
         </GridLayout>
     </Page>
 </template>
