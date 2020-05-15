@@ -10,6 +10,8 @@ export const screenHeightDips = screen.mainScreen.heightDIPs;
 export const screenWidthDips = screen.mainScreen.widthDIPs;
 export const mdiFontFamily: string = locals.mdiFontFamily;
 export const nunitoFontFamily: string = locals.nunitoFontFamily;
+export const nunitoboldFontFamily: string = locals.nunitoboldFontFamily;
+export const nunitoblackFontFamily: string = locals.nunitoblackFontFamily;
 
 export const roomImageHeight = Math.round(screenHeightDips * 0.25);
 export const roomHeaderHeight = roomImageHeight + actionBarHeight;

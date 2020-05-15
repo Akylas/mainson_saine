@@ -42,7 +42,7 @@ module.exports = (env, params = {}) => {
     }
 
     // Add your custom Activities, Services and other android app components here.
-    let appComponents = env.appComponents || [];
+    const appComponents = env.appComponents || [];
     appComponents.push(...['tns-core-modules/ui/frame', 'tns-core-modules/ui/frame/activity']);
 
     console.log('appComponents', appComponents);
@@ -162,7 +162,9 @@ module.exports = (env, params = {}) => {
     const itemsToClean = [`${dist}/**/*`];
     if (platform === 'android') {
         itemsToClean.push(`${join(projectRoot, 'platforms', 'android', 'app', 'src', 'main', 'assets', 'snapshots')}`);
-        itemsToClean.push(`${join(projectRoot, 'platforms', 'android', 'app', 'build', 'configurations', 'nativescript-android-snapshot')}`);
+        itemsToClean.push(
+            `${join(projectRoot, 'platforms', 'android', 'app', 'build', 'configurations', 'nativescript-android-snapshot')}`
+        );
     }
 
     const package = require('./package.json');
@@ -193,23 +195,27 @@ module.exports = (env, params = {}) => {
                 isIOS
                     ? ` itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=${APP_STORE_ID}&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software`
                     : `market://details?id=${package.nativescript.id}`
-            }"`,
+            }"`
         },
         params.definePlugin || {}
     );
-    
+
     console.log('defines', defines);
 
     const symbolsParser = require('scss-symbols-parser');
-    const mdiSymbols = symbolsParser.parseSymbols(readFileSync(resolve(projectRoot, 'node_modules/@mdi/font/scss/_variables.scss')).toString());
-    const mdiIcons = JSON.parse(`{${mdiSymbols.variables[mdiSymbols.variables.length - 1].value.replace(/" (F|0)(.*?)([,\n]|$)/g, '": "$1$2"$3')}}`);
+    const mdiSymbols = symbolsParser.parseSymbols(
+        readFileSync(resolve(projectRoot, 'node_modules/@mdi/font/scss/_variables.scss')).toString()
+    );
+    const mdiIcons = JSON.parse(
+        `{${mdiSymbols.variables[mdiSymbols.variables.length - 1].value.replace(/" (F|0)(.*?)([,\n]|$)/g, '": "$1$2"$3')}}`
+    );
 
     const scssPrepend = `$nunito-fontFamily: ${platform === 'android' ? 'res/nunito' : 'Nunito'};
+    $nunitobold-fontFamily: ${platform === 'android' ? 'res/nunito_bold' : 'Nunito'};
+    $nunitoblack-fontFamily: ${platform === 'android' ? 'res/nunito_black' : 'Nunito'};
     $mdi-fontFamily: ${platform === 'android' ? 'materialdesignicons-webfont' : 'Material Design Icons'};`;
 
-    params.copyPlugin = [
-        { from: '../node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf', to: 'fonts' }
-    ];
+    params.copyPlugin = [{ from: '../node_modules/@mdi/font/fonts/materialdesignicons-webfont.ttf', to: 'fonts' }];
     nsWebpack.processAppComponents(appComponents, platform);
     const config = {
         mode,
@@ -236,7 +242,12 @@ module.exports = (env, params = {}) => {
         resolve: {
             extensions: ['.vue', '.mjs', '.ts', '.js', '.scss', '.css'],
             // Resolve {N} system modules from tns-core-modules
-            modules: [resolve(__dirname, `node_modules/${coreModulesPackageName}`), resolve(__dirname, 'node_modules'), `node_modules/${coreModulesPackageName}`, 'node_modules'],
+            modules: [
+                resolve(__dirname, `node_modules/${coreModulesPackageName}`),
+                resolve(__dirname, 'node_modules'),
+                `node_modules/${coreModulesPackageName}`,
+                'node_modules'
+            ],
             alias,
             // resolve symlinks to symlinked modules
             symlinks: true
@@ -510,11 +521,17 @@ module.exports = (env, params = {}) => {
             let appVersion;
             let buildNumber;
             if (platform === 'android') {
-                appVersion = readFileSync('app/App_Resources/Android/app.gradle', 'utf8').match(/versionName "((?:[0-9]+\.?)+)"/)[1];
+                appVersion = readFileSync('app/App_Resources/Android/app.gradle', 'utf8').match(
+                    /versionName "((?:[0-9]+\.?)+)"/
+                )[1];
                 buildNumber = readFileSync('app/App_Resources/Android/app.gradle', 'utf8').match(/versionCode ([0-9]+)/)[1];
             } else if (platform === 'ios') {
-                appVersion = readFileSync('app/App_Resources/iOS/Info.plist', 'utf8').match(/<key>CFBundleShortVersionString<\/key>[\s\n]*<string>(.*?)<\/string>/)[1];
-                buildNumber = readFileSync('app/App_Resources/iOS/Info.plist', 'utf8').match(/<key>CFBundleVersion<\/key>[\s\n]*<string>([0-9]*)<\/string>/)[1];
+                appVersion = readFileSync('app/App_Resources/iOS/Info.plist', 'utf8').match(
+                    /<key>CFBundleShortVersionString<\/key>[\s\n]*<string>(.*?)<\/string>/
+                )[1];
+                buildNumber = readFileSync('app/App_Resources/iOS/Info.plist', 'utf8').match(
+                    /<key>CFBundleVersion<\/key>[\s\n]*<string>([0-9]*)<\/string>/
+                )[1];
             }
             console.log('appVersion', appVersion, buildNumber);
 
