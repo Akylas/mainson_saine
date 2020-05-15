@@ -4,7 +4,7 @@ dependencies:
   nativescript-collectionview: 'link:../../../../usr/local/pnpm-global/node_modules/nativescript-collectionview'
   nativescript-extendedinfo: 1.0.7
   nativescript-fonticon: 2.0.0
-  nativescript-htmllabel: 1.0.32
+  nativescript-htmllabel: 'link:../../../../usr/local/pnpm-global/node_modules/nativescript-htmllabel'
   nativescript-image: 3.0.6
   nativescript-inappbrowser: 2.3.0
   nativescript-material-bottomsheet: 3.2.3
@@ -6278,10 +6278,6 @@ packages:
       mkdirp: 0.5.5
     resolution:
       integrity: sha512-ciGJtNbtMB2lGv8jAkUripkRjd3g8atX9VYPSt6e8PI6YPiOKeoma3xjcXoW66pFMYpHnfrbp6Mq9U/QtiQrVg==
-  /nativescript-htmllabel/1.0.32:
-    dev: false
-    resolution:
-      integrity: sha512-mXs6Otsd+Ox/N6Ttrrt6YX7IuUZLVYrEJ6EKCDUcKLVoQfOeWS2DmT38BOBwtRUU4jT4b7I1Sn0yB4lfxnz6tw==
   /nativescript-image/3.0.6:
     dev: false
     resolution:
