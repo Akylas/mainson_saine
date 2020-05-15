@@ -40,6 +40,7 @@ export default class Sources extends BaseVueComponent {
 
     mounted() {
         super.mounted();
+        this.refresh();
     }
     async openLink(url: string) {
         try {
@@ -105,9 +106,9 @@ export default class Sources extends BaseVueComponent {
             });
     }
     onNavigatedTo(args: NavigatedData) {
-        if (!args.isBackNavigation) {
-            this.refresh();
-        }
+        // if (!args.isBackNavigation) {
+        //     this.refresh();
+        // }
     }
     onTap(command: string, args: EventData) {
         switch (command) {

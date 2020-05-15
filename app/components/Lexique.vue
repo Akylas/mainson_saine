@@ -5,14 +5,29 @@
                 <Button class="actionBarButton" variant="text" text="mdi-arrow-left" @tap="onTap('back', $event)" />
                 <Label class="actionBarTitle" verticalAlignment="center" :text="'lexique' | uppercase" color="white" />
             </StackLayout>
-            <CollectionView width="100%" height="100%" :items="dataItems" :itemTemplateSelector="templateSelector" :itemIdGenerator="(item,i)=>i">
+            <CollectionView
+                width="100%"
+                height="100%"
+                :items="dataItems"
+                :itemTemplateSelector="templateSelector"
+                :itemIdGenerator="(item, i) => i"
+            >
                 <v-template name="section">
                     <GridLayout rows="10,auto" columns="15,*" backgroundColor="white">
-                        <Label row="1" col="1" :text="item.name" :color="darkColor" fontSize="18" class="nunitobold" borderBottomWidth="2" :borderBottomColor="darkColor" />
+                        <Label
+                            row="1"
+                            col="1"
+                            :text="item.name"
+                            :color="darkColor"
+                            fontSize="18"
+                            class="nunitobold"
+                            borderBottomWidth="2"
+                            :borderBottomColor="darkColor"
+                        />
                     </GridLayout>
                 </v-template>
                 <v-template name="item">
-                    <GridLayout backgroundColor="white" :rippleColor="themeColor" @tap="onNavigationItemTap(item)" >
+                    <GridLayout backgroundColor="white" :rippleColor="themeColor" @tap="onNavigationItemTap(item)">
                         <Label padding="10" verticalAlignment="center" :text="item.name" fontSize="18" color="#666"></Label>
                     </GridLayout>
                 </v-template>
@@ -33,16 +48,18 @@ import * as fileSystem from '@nativescript/core/file-system';
 interface Data {}
 
 function mergeData(last, newObj) {
-    const keys = Object.keys(last).concat(Object.keys(newObj)).filter((v, i, a) => a.indexOf(v) === i);
-    keys.forEach(k=>{
+    const keys = Object.keys(last)
+        .concat(Object.keys(newObj))
+        .filter((v, i, a) => a.indexOf(v) === i);
+    keys.forEach(k => {
         if (last[k] !== newObj[k]) {
             if (last[k] === undefined) {
-                last[k] = newObj[k]
+                last[k] = newObj[k];
             } else if (newObj[k]) {
-                last[k] = (Array.isArray(last[k])?last[k]:[last[k]]).concat(newObj[k])
+                last[k] = (Array.isArray(last[k]) ? last[k] : [last[k]]).concat(newObj[k]);
             }
         }
-    }) 
+    });
     return last;
 }
 
@@ -56,13 +73,17 @@ export default class Lexique extends BaseVueComponent {
 
     mounted() {
         super.mounted();
+        this.refresh();
     }
     refresh() {
         const folder = fileSystem.knownFolders.currentApp();
-        folder.getFile('assets/lexique.json').readText().then(function (content) {
-            return JSON.parse(content);
-        })
-        // http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/lexique.json'))
+        folder
+            .getFile('assets/lexique.json')
+            .readText()
+            .then(function(content) {
+                return JSON.parse(content);
+            })
+            // http.getJSON('file://' + fileSystem.path.join(folder.path, 'assets/lexique.json'))
             .then(r => {
                 // console.log(r);
                 const keys = Object.keys(r);
@@ -76,16 +97,16 @@ export default class Lexique extends BaseVueComponent {
                     let lastValue;
                     values.forEach(v => {
                         if (lastValue && lastValue.name === v['Agent pathogène']) {
-                            lastValue.data = mergeData(lastValue.data, v)
+                            lastValue.data = mergeData(lastValue.data, v);
                             return;
                         }
-                        const toAdd= {
+                        const toAdd = {
                             template: 'item',
                             name: v['Agent pathogène'],
-                            data:v
+                            data: v
                         };
                         items.push(toAdd);
-                        lastValue = toAdd
+                        lastValue = toAdd;
                     });
                 });
                 return items;
@@ -98,9 +119,9 @@ export default class Lexique extends BaseVueComponent {
             });
     }
     onNavigatedTo(args: NavigatedData) {
-        if (!args.isBackNavigation) {
-            this.refresh();
-        }
+        // if (!args.isBackNavigation) {
+        //     this.refresh();
+        // }
     }
     onTap(command: string, args: EventData) {
         switch (command) {
@@ -128,7 +149,7 @@ export default class Lexique extends BaseVueComponent {
                     curve: 'linear'
                 },
                 props: {
-                    lexiqueData:tappedItem.data
+                    lexiqueData: tappedItem.data
                 }
             } as any);
         });
