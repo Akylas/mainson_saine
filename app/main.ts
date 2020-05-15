@@ -30,11 +30,10 @@ import { isAndroid, isIOS } from '@nativescript/core/platform';
 Vue.config.silent = !dev;
 Vue.config['debug'] = dev;
 
-
 import PagerPlugin from 'nativescript-pager/vue';
 import { Label, enableIOSDTCoreText } from 'nativescript-htmllabel';
 import CollectionView from 'nativescript-collectionview/vue';
-import {installMixins} from 'nativescript-material-core';
+import { installMixins } from 'nativescript-material-core';
 import { install as installBottomSheets } from 'nativescript-material-bottomsheet';
 import BottomSheetPlugin from 'nativescript-material-bottomsheet/vue';
 import * as imageModule from 'nativescript-image';
@@ -88,7 +87,5 @@ Vue.prototype.$alert = function(message) {
 };
 
 new Vue({
-    render: h => {
-        return h('frame', [h(Home)]);
-    }
+    render: h => h('frame', [h(Home)])
 }).$start();
